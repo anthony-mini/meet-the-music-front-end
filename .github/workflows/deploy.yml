@@ -26,8 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
       - name: Build
-        run: ng build --configuration production
+        run: npx ng build --configuration production
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
