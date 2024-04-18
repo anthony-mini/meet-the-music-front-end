@@ -4,6 +4,7 @@ run-name: ${{ github.actor}} build and deploy the application
 on:
   push:
     branches:
+      - main
       - staging
 
 jobs:
@@ -34,6 +35,9 @@ jobs:
 
       - name: list build files
         run: ls -la dist/meet-the-music-front-end/browser
+
+      - name: Set FTP server directory
+        run: echo "FTP_SERVER_DIR=$([[ '${{ github.ref }}' == 'refs/heads/main' ]] && echo '${{ secrets.FTP_SERVER_DIR_PRODUCTION }}' || echo '${{ secrets.FTP_SERVER_DIR_STAGING }}')" >> $GITHUB_ENV
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
