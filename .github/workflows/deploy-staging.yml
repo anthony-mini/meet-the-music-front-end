@@ -1,0 +1,47 @@
+name: :rocket: Deploy to Staging
+run-name: ${{ github.actor}} build and deploy the application in staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: ls -la
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.9.0"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Build
+        run: npx ng build --configuration production
+
+      - name: list build files
+        run: ls -la dist/meet-the-music-front-end/browser
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          protocol: ftp
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/meet-the-music-front-end/browser/
+          server-dir: ${{ secrets.FTP_SERVER_DIR_STAGING}}
+          port: ${{ secrets.FTP_PORT }}
