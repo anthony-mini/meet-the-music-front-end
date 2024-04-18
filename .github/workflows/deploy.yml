@@ -11,11 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Change working directory
+        run: cd meet-the-music-front-end
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "14"
           cache: "npm"
+          cache-dependency-path: "meet-the-music-front-end/package-lock.json"
 
       - name: Install dependencies
         run: npm install
