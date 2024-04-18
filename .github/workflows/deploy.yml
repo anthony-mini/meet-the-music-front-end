@@ -32,11 +32,14 @@ jobs:
       - name: Build
         run: npx ng build --configuration production
 
+      - name: list build files
+        run: ls -la dist/meet-the-music-front-end/browser
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/meet-the-music-front-end/browser
+          local-dir: dist/meet-the-music-front-end
           server-dir: ${{ secrets.FTP_SERVER_DIR}}
