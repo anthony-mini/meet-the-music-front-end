@@ -1,0 +1,39 @@
+name: Build and Deploy to Hostinger via FTP
+run-name: ${{ github.actor}} build and deploy the application
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+     strategy:
+      matrix:
+        # Spécifie la LTS de Node.js à utiliser pour les tests
+        node-version: [20.11.1]
+
+    steps:
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: ng build --configuration production
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/meet-the-music-front-end/browser
+          server-dir: ${{ secrets.FTP_SERVER_DIR}}
+
