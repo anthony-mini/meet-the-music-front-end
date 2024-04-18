@@ -37,7 +37,13 @@ jobs:
         run: ls -la dist/meet-the-music-front-end/browser
 
       - name: Set FTP server directory
-        run: echo "FTP_SERVER_DIR=$([[ '${{ github.ref }}' == 'refs/heads/main' ]] && echo '${{ secrets.FTP_SERVER_DIR_PRODUCTION }}' || echo '${{ secrets.FTP_SERVER_DIR_STAGING }}')" >> $GITHUB_ENV
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "FTP_SERVER_DIR=${{ secrets.FTP_SERVER_DIR_PRODUCTION }}" >> $GITHUB_ENV
+          else
+            echo "FTP_SERVER_DIR=${{ secrets.FTP_SERVER_DIR_STAGING }}" >> $GITHUB_ENV
+          fi
+        shell: bash
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
