@@ -10,9 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-     strategy:
+    strategy:
       matrix:
-        # Spécifie la LTS de Node.js à utiliser pour les tests
         node-version: [20.11.1]
 
     steps:
@@ -20,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install
@@ -36,4 +35,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/meet-the-music-front-end/browser
           server-dir: ${{ secrets.FTP_SERVER_DIR}}
-
