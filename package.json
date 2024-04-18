@@ -8,6 +8,7 @@
     "build:production": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
     "serve:ssr:meet-the-music-front-end": "node dist/meet-the-music-front-end/server/server.mjs"
   },
   "private": true,
