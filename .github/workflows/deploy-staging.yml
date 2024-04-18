@@ -1,4 +1,4 @@
-name: :rocket: Deploy to Staging
+name: Deploy to Staging
 run-name: ${{ github.actor}} build and deploy the application in staging
 
 on:

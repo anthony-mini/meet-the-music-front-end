@@ -1,4 +1,4 @@
-name: :rocket: Deploy to Production
+name: Deploy to Production
 run-name: ${{ github.actor}} build and deploy the application in production
 
 on:
