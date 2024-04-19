@@ -9,7 +9,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
-    "serve:ssr:meet-the-music-front-end": "node dist/meet-the-music-front-end/server/server.mjs"
+    "serve:ssr:meet-the-music-front-end": "node dist/meet-the-music-front-end/server/server.mjs",
+    "reset:node": "rm -rf node_modules && rm package-lock.json && npm install"
+
   },
   "private": true,
   "dependencies": {
