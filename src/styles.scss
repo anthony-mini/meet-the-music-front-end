@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import url('../src/assets/normalize/normalize.css');
+
+@import url('../src/assets/fonts/ClashDisplay/css/clash-display.css');
+@import url('../src/assets/fonts/ClashGrotesk/css/clash-grotesk.css');
