@@ -8,4 +8,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home-nav-bar.component.html',
   styleUrl: './home-nav-bar.component.scss',
 })
-export class HomeNavBarComponent {}
+export class HomeNavBarComponent {
+  mobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+}
