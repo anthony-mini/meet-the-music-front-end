@@ -20,7 +20,7 @@
       >
         <span class="sr-only">Open main menu</span>
         <svg
-          class="h-6 w-6"
+          class="h-8 w-8"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
@@ -35,8 +35,7 @@
         </svg>
       </button>
     </div>
-    <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#" class="text-sm font-semibold leading-6 text-white">Product</a>
+    <div class="hidden lg:flex items-center lg:gap-x-7">
       <a href="#" class="text-sm font-semibold leading-6 text-white"
         >Features</a
       >
@@ -44,6 +43,79 @@
         >Marketplace</a
       >
       <a href="#" class="text-sm font-semibold leading-6 text-white">Company</a>
+
+      <div class="button-container flex items-center lg:gap-x-4">
+        <button>
+          <span class="sr-only">Search</span>
+
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 24C19.4183 24 23 20.4183 23 16C23 11.5817 19.4183 8 15 8C10.5817 8 7 11.5817 7 16C7 20.4183 10.5817 24 15 24Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M25 25.9999L20.65 21.6499"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button>
+          <span class="sr-only">Message</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 10H16M8 14H12M21 12C21 16.9706 16.9706 21 12 21C10.843 21 9.73701 20.7817 8.72095 20.384C8.33909 20.2345 7.92598 20.1704 7.5216 20.2385L3.69276 20.8833C3.35374 20.9404 3.05957 20.6463 3.11667 20.3072L3.76147 16.4784C3.82957 16.074 3.76547 15.6609 3.61601 15.279C3.21832 14.263 3 13.157 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <button>
+          <span class="sr-only">Notification</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 8C6 6.4087 6.63214 4.88258 7.75736 3.75736C8.88258 2.63214 10.4087 2 12 2C13.5913 2 15.1174 2.63214 16.2426 3.75736C17.3679 4.88258 18 6.4087 18 8C18 15 21 17 21 17H3C3 17 6 15 6 8Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.3 21C10.4674 21.3044 10.7135 21.5583 11.0125 21.7352C11.3116 21.912 11.6526 22.0053 12 22.0053C12.3475 22.0053 12.6885 21.912 12.9876 21.7352C13.2866 21.5583 13.5327 21.3044 13.7 21"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
 
       <a routerLink="/login" class="text-sm font-semibold leading-6 text-white"
         >Log in <span aria-hidden="true">&rarr;</span></a
@@ -78,7 +150,7 @@
         >
           <span class="sr-only">Close menu</span>
           <svg
-            class="h-6 w-6"
+            class="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
