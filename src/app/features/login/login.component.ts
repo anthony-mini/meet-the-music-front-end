@@ -23,6 +23,21 @@ export class LoginComponent {
   onSubmit() {
     this.userService.createUser(this.user).subscribe(
       (response) => {
+        console.log(this.user);
+
+        // Gérer la réponse du serveur ici
+        console.log(response);
+      },
+      (error) => {
+        // Gérer l'erreur ici
+        console.error(error);
+      },
+    );
+  }
+
+  findAllUsers() {
+    this.userService.findAllUsers().subscribe(
+      (response) => {
         // Gérer la réponse du serveur ici
         console.log(response);
       },

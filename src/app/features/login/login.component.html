@@ -3,9 +3,9 @@
     <label for="first_name" class="text-white">Prénom:</label>
     <input
       type="text"
-      id="first_name"
+      id="firstName"
       [(ngModel)]="user.first_name"
-      name="first_name"
+      name="firstName"
       required
       class="text-black"
     />
@@ -15,9 +15,9 @@
     <label for="last_name" class="text-white">Nom:</label>
     <input
       type="text"
-      id="last_name"
+      id="lastName"
       [(ngModel)]="user.last_name"
-      name="last_name"
+      name="lastName"
       required
       class="text-black"
     />
@@ -61,3 +61,5 @@
 
   <button type="submit" class="text-white">Créer un utilisateur</button>
 </form>
+
+<button (click)="findAllUsers()" class="text-white">FindAll</button>
