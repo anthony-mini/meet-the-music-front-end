@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpErrorInterceptor } from './core/services/http-error-interceptor.service';
 import { routes } from '../app/app.routes';
 
 // const routes: Routes = [
@@ -14,6 +15,8 @@ import { routes } from '../app/app.routes';
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+  ],
 })
 export class AppModule {}

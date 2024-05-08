@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Role } from '../../core/enums/role.enum';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,30 +29,25 @@ export class SignUpComponent {
   constructor(
     private userService: UserService,
     private router: Router,
+    private errorHandlerService: ErrorHandlerService,
   ) {}
 
   onSubmit() {
-    console.log(this.user);
-
     this.userService
       .createUser(this.user)
       .pipe(
         catchError((error) => {
-          // Gérer l'erreur ici
           console.error('Error creating user:', error);
           return of(null); // Retourne un Observable résoluble en cas d'erreur
         }),
       )
       .subscribe((response) => {
         if (response) {
-          // Gérer la réponse du serveur ici
-          console.log(response);
-
-          // Rediriger l'utilisateur vers une autre page
           this.router.navigate(['/login']);
         } else {
-          // Gérer le cas où une erreur est capturée et le flux continue
-          console.log('Aucune réponse suite à une erreur capturée.');
+          this.errorHandlerService.handleError(
+            "Erreur lors de la création de l'utilisateur.",
+          );
         }
       });
   }
