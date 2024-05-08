@@ -3,34 +3,35 @@
     class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
   >
     <div class="mx-auto w-full max-w-sm lg:w-96">
-      <!-- Rejoignez MeetTheMusic
-Découvrez Votre Scène Musicale Locale à Lyon
-
-Créez votre compte sur MeetTheMusic et connectez-vous avec les talents artistiques les plus vibrants et les espaces événementiels les plus captivants de Lyon. Que vous soyez un artiste cherchant à se produire, un espace culturel à la recherche de nouveaux talents, ou un amateur de musique désireux de découvrir des performances uniques, MeetTheMusic est votre plateforme.
-
-Pourquoi Rejoindre MeetTheMusic ?
-
-Connexion Directe : Accédez directement à une vaste réseau d'artistes et de lieux.
-Opportunités Illimitées : Trouvez des opportunités de performances live, des événements et des collaborations.
-Communauté Passionnée : Faites partie d'une communauté qui valorise la musique et la culture locale.
-Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à utiliser, conçue pour soutenir vos ambitions artistiques et commerciales. -->
+      <h2 class="text-[#ffffff] text-4xl">
+        <span class="text-[#0E1218] bg-[#ffffff] rounded-lg px-2"
+          >Rejoignez</span
+        >
+        MeetTheMusic et découvrez la scène musicale locale de Lyon.
+      </h2>
+      <div class="mt-6 prose prose-indigo prose-lg text-gray-300">
+        <p>
+          Connectez-vous avec des artistes vibrants et des espaces événementiels
+          captivants.
+        </p>
+        <p>
+          Que vous soyez un artiste ou un amateur de musique, MeetTheMusic est
+          votre plateforme idéale.
+        </p>
+      </div>
     </div>
 
-    <div class="mx-auto w-full max-w-sm lg:w-96">
+    <div class="mx-auto w-full max-w-sm lg:w-96 mt-6">
       <div>
-        <img
-          class="h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Your Company"
-        />
         <h2 class="mt-8 text-2xl font-bold leading-9 text-[#ffffff]">
           Créez Votre Compte
         </h2>
       </div>
 
+      <!-- Form starts here -->
       <div class="mt-10">
         <div>
-          <form action="#" method="POST" class="space-y-6">
+          <form (submit)="onSubmit()" method="POST" class="space-y-6">
             <div>
               <label
                 for="role"
@@ -41,6 +42,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
 
               <div class="mt-2">
                 <select
+                  [(ngModel)]="user.role"
                   id="role"
                   name="role"
                   required
@@ -64,6 +66,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
                 >
                 <div class="mt-2">
                   <input
+                    [(ngModel)]="user.lastName"
                     id="lastName"
                     name="lastName"
                     type="text"
@@ -82,6 +85,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
                 >
                 <div class="mt-2">
                   <input
+                    [(ngModel)]="user.firstName"
                     id="firstName"
                     name="firstName"
                     type="text"
@@ -101,6 +105,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
               >
               <div class="mt-2">
                 <input
+                  [(ngModel)]="user.email"
                   id="email"
                   name="email"
                   type="email"
@@ -119,6 +124,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
               >
               <div class="mt-2">
                 <input
+                  [(ngModel)]="user.password"
                   id="password"
                   name="password"
                   type="password"
@@ -137,6 +143,7 @@ Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à uti
               >
               <div class="mt-2">
                 <input
+                  [(ngModel)]="user.phone"
                   id="phone"
                   name="phone"
                   type="tel"
