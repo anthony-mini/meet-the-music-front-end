@@ -5,11 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { routes } from '../app/app.routes';
 
-const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: '**', component: PageNotFoundComponent },
-];
+// const routes: Routes = [
+//   { path: '', component: AppComponent },
+//   { path: '**', component: PageNotFoundComponent },
+// ];
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],

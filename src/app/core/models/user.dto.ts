@@ -1,19 +1,22 @@
 import { Role } from '../enums/role.enum';
 
 export interface UserDto {
-  id_user: number;
-  first_name: string;
-  last_name: string;
+  id: number;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   phone: string;
+  address: string;
   role: Role;
 }
 
 export interface CreateUserDto {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   phone: string;
+  address: string;
+  role: Role;
 }

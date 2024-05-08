@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 import { UserDto, CreateUserDto } from '../models/user.dto';
 import { Observable } from 'rxjs';
+import { Role } from '../enums/role.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +20,13 @@ export class UserService {
     console.log(newUser);
 
     newUser = {
-      first_name: 'John',
-      last_name: 'Doe',
+      firstName: 'John',
+      lastName: 'Doe',
       email: 'test@email.fr',
       password: 'password',
       phone: '0123456789',
+      address: '1 rue de la paix',
+      role: Role.USER,
     };
 
     console.log(newUser);

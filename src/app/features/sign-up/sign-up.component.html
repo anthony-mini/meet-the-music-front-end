@@ -1,0 +1,194 @@
+<section class="flex min-h-full">
+  <div
+    class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
+  >
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <!-- Rejoignez MeetTheMusic
+Découvrez Votre Scène Musicale Locale à Lyon
+
+Créez votre compte sur MeetTheMusic et connectez-vous avec les talents artistiques les plus vibrants et les espaces événementiels les plus captivants de Lyon. Que vous soyez un artiste cherchant à se produire, un espace culturel à la recherche de nouveaux talents, ou un amateur de musique désireux de découvrir des performances uniques, MeetTheMusic est votre plateforme.
+
+Pourquoi Rejoindre MeetTheMusic ?
+
+Connexion Directe : Accédez directement à une vaste réseau d'artistes et de lieux.
+Opportunités Illimitées : Trouvez des opportunités de performances live, des événements et des collaborations.
+Communauté Passionnée : Faites partie d'une communauté qui valorise la musique et la culture locale.
+Facilité et Sécurité : Profitez d'une plateforme sécurisée et facile à utiliser, conçue pour soutenir vos ambitions artistiques et commerciales. -->
+    </div>
+
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div>
+        <img
+          class="h-10 w-auto"
+          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+          alt="Your Company"
+        />
+        <h2 class="mt-8 text-2xl font-bold leading-9 text-[#ffffff]">
+          Créez Votre Compte
+        </h2>
+      </div>
+
+      <div class="mt-10">
+        <div>
+          <form action="#" method="POST" class="space-y-6">
+            <div>
+              <label
+                for="role"
+                class="block text-sm font-medium leading-6 text-[#ffffff]"
+              >
+                Vous êtes ?</label
+              >
+
+              <div class="mt-2">
+                <select
+                  id="role"
+                  name="role"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                >
+                  <option value="artist">Un(e) Artiste</option>
+                  <option value="promoter">
+                    Un(e) Responsable d'établissement
+                  </option>
+                  <option value="user">Autres</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex justify-between gap-2">
+              <div>
+                <label
+                  for="lastName"
+                  class="block text-sm font-medium leading-6 text-[#ffffff]"
+                  >Nom</label
+                >
+                <div class="mt-2">
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    autocomplete="family-name"
+                    required
+                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="firstName"
+                  class="block text-sm font-medium leading-6 text-[#ffffff]"
+                  >Prénom</label
+                >
+                <div class="mt-2">
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    autocomplete="given-name"
+                    required
+                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-[#ffffff]"
+                >Email</label
+              >
+              <div class="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="password"
+                class="block text-sm font-medium leading-6 text-[#ffffff]"
+                >Mots de passe</label
+              >
+              <div class="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium leading-6 text-[#ffffff]"
+                >Téléphone</label
+              >
+              <div class="mt-2">
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+                <label
+                  for="remember-me"
+                  class="ml-3 block text-sm leading-6 text-[#ffffff]"
+                  >Se souvenir de moi</label
+                >
+              </div>
+
+              <div class="text-sm leading-6">
+                <a
+                  href="#"
+                  class="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >Mots de passe oublié ?
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Inscription
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative hidden w-0 flex-1 lg:block">
+    <img
+      class="absolute inset-0 h-full w-full object-cover"
+      src="../../../assets/images/lonely-microphone.webp"
+      alt=""
+    />
+  </div>
+</section>

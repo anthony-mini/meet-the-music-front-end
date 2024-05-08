@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CreateUserDto } from 'src/app/core/models/user.dto';
 import { UserService } from 'src/app/core/services/user.service';
+import { Role } from '../../core/enums/role.enum';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -11,11 +12,13 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class LoginComponent {
   user: CreateUserDto = {
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     phone: '',
+    address: '',
+    role: Role.USER,
   };
 
   constructor(private userService: UserService) {}
