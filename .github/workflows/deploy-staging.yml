@@ -30,7 +30,7 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Build
-        run: npx ng build --configuration=staging
+        run: npx ng build --configuration staging
 
       - name: list build files
         run: ls -la dist/meet-the-music-front-end/browser
