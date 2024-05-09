@@ -8,24 +8,22 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  xit('should create the app', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  xit(`should have the 'meet-the-music-front-end' title`, () => {
+  it(`should have the 'meet-the-music-front-end' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('meet-the-music-front-end');
   });
 
-  xit('should render title', () => {
+  it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, meet-the-music-front-end',
-    );
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, meet-the-music-front-end');
   });
 });
