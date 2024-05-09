@@ -20,8 +20,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.9.0"
-          cache: "npm"
+          node-version: '20.9.0'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -30,7 +30,7 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Build
-        run: npx ng build --configuration production
+        run: npx ng build --configuration=staging
 
       - name: list build files
         run: ls -la dist/meet-the-music-front-end/browser
