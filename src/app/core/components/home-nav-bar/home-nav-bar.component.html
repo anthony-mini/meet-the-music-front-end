@@ -1,0 +1,279 @@
+<header class="bg-[#0E1216]">
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+    aria-label="Global"
+  >
+    <a routerLink="/" class="-m-1.5 p-1.5">
+      <span class="sr-only">MeetTheMusic Company</span>
+      <img
+        class="h-6 w-auto md:h-8 md:w-auto"
+        src="../../../../assets/logo/logo_meetthemusic.svg"
+        alt=""
+      />
+    </a>
+    <div class="flex lg:hidden">
+      <button
+        type="button"
+        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        (click)="toggleMobileMenu()"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ffffff"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="hidden lg:flex items-center lg:gap-x-7">
+      <a href="#" class="text-sm font-semibold leading-6 text-white"
+        >Découvrir</a
+      >
+      <a href="#" class="text-sm font-semibold leading-6 text-white"
+        >Communauté</a
+      >
+      <a href="#" class="text-sm font-semibold leading-6 text-white"
+        >Services</a
+      >
+
+      <div class="button-container flex items-center lg:gap-x-4">
+        <button>
+          <span class="sr-only">Search</span>
+
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 24C19.4183 24 23 20.4183 23 16C23 11.5817 19.4183 8 15 8C10.5817 8 7 11.5817 7 16C7 20.4183 10.5817 24 15 24Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M25 25.9999L20.65 21.6499"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button>
+          <span class="sr-only">Message</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 10H16M8 14H12M21 12C21 16.9706 16.9706 21 12 21C10.843 21 9.73701 20.7817 8.72095 20.384C8.33909 20.2345 7.92598 20.1704 7.5216 20.2385L3.69276 20.8833C3.35374 20.9404 3.05957 20.6463 3.11667 20.3072L3.76147 16.4784C3.82957 16.074 3.76547 15.6609 3.61601 15.279C3.21832 14.263 3 13.157 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <button>
+          <span class="sr-only">Notification</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 8C6 6.4087 6.63214 4.88258 7.75736 3.75736C8.88258 2.63214 10.4087 2 12 2C13.5913 2 15.1174 2.63214 16.2426 3.75736C17.3679 4.88258 18 6.4087 18 8C18 15 21 17 21 17H3C3 17 6 15 6 8Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.3 21C10.4674 21.3044 10.7135 21.5583 11.0125 21.7352C11.3116 21.912 11.6526 22.0053 12 22.0053C12.3475 22.0053 12.6885 21.912 12.9876 21.7352C13.2866 21.5583 13.5327 21.3044 13.7 21"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <a routerLink="/login" class="text-sm font-semibold leading-6 text-white"
+        >Se connecter<span aria-hidden="true">&rarr;</span></a
+      >
+    </div>
+  </nav>
+  <!-- Mobile menu, show/hide based on menu open state. -->
+  <div
+    class="lg:hidden"
+    [class.hidden]="!mobileMenuOpen"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Background backdrop, show/hide based on slide-over state. -->
+    <div class="fixed inset-0 z-10"></div>
+    <div
+      class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#0E1216] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
+    >
+      <div class="flex items-center justify-between">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Your Company</span>
+          <img
+            class="h-8 w-auto"
+            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            alt=""
+          />
+        </a>
+        <button
+          type="button"
+          class="-m-2.5 rounded-md p-2.5 text-gray-700"
+          (click)="toggleMobileMenu()"
+        >
+          <span class="sr-only">Close menu</span>
+          <svg
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ffffff"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-6 flow-root realtive">
+        <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="space-y-2 py-6">
+            <a
+              href="#"
+              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >Découvrir</a
+            >
+            <a
+              href="#"
+              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >Services</a
+            >
+            <a
+              href="#"
+              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >Communauté</a
+            >
+          </div>
+          <div class="py-6">
+            <a
+              routerLink="/login"
+              (click)="toggleMobileMenu()"
+              class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >Se connecter</a
+            >
+          </div>
+        </div>
+        <div
+          class="divide-y divide-gray-500/10 absolute bottom-0 left-0 right-0"
+        >
+          <div class="space-y-2 py-5"></div>
+          <div class="py-6">
+            <div class="button-container flex items-center justify-evenly">
+              <button>
+                <span class="sr-only">Search</span>
+
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 24C19.4183 24 23 20.4183 23 16C23 11.5817 19.4183 8 15 8C10.5817 8 7 11.5817 7 16C7 20.4183 10.5817 24 15 24Z"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M25 25.9999L20.65 21.6499"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <button>
+                <span class="sr-only">Message</span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 10H16M8 14H12M21 12C21 16.9706 16.9706 21 12 21C10.843 21 9.73701 20.7817 8.72095 20.384C8.33909 20.2345 7.92598 20.1704 7.5216 20.2385L3.69276 20.8833C3.35374 20.9404 3.05957 20.6463 3.11667 20.3072L3.76147 16.4784C3.82957 16.074 3.76547 15.6609 3.61601 15.279C3.21832 14.263 3 13.157 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+
+              <button>
+                <span class="sr-only">Notification</span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 8C6 6.4087 6.63214 4.88258 7.75736 3.75736C8.88258 2.63214 10.4087 2 12 2C13.5913 2 15.1174 2.63214 16.2426 3.75736C17.3679 4.88258 18 6.4087 18 8C18 15 21 17 21 17H3C3 17 6 15 6 8Z"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.3 21C10.4674 21.3044 10.7135 21.5583 11.0125 21.7352C11.3116 21.912 11.6526 22.0053 12 22.0053C12.3475 22.0053 12.6885 21.912 12.9876 21.7352C13.2866 21.5583 13.5327 21.3044 13.7 21"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

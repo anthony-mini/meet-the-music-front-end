@@ -1,0 +1,158 @@
+<section class="flex sm:min-h-full">
+  <div
+    class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
+  >
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <h1 class="text-[#ffffff] text-4xl sm:text-5xl">
+        <span class="text-[#0E1218] bg-[#ffffff] rounded-lg px-2"
+          >Rejoignez</span
+        >
+        MeetTheMusic et découvrez la scène musicale locale de Lyon.
+      </h1>
+      <div class="description mt-5 leading-2 text-lg md:text-xl text-[#D7DADD]">
+        <p>
+          Connectez-vous avec des artistes vibrants et des espaces événementiels
+          captivants.
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-sm lg:w-96 mt-6">
+      <div>
+        <h2 class="mt-5 text-3xl font-bold leading-9 text-[#ffffff]">
+          Créez Votre Compte
+        </h2>
+      </div>
+
+      <!-- Form starts here -->
+      <div class="mt-10">
+        <div>
+          <form (submit)="onSubmit()" method="POST" class="space-y-8">
+            <div>
+              <label
+                for="role"
+                class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+              >
+                Vous êtes ?</label
+              >
+
+              <div class="mt-2">
+                <select
+                  [(ngModel)]="user.role"
+                  id="role"
+                  name="role"
+                  required
+                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                >
+                  <option value="artist">Un(e) Artiste</option>
+                  <option value="promoter">
+                    Un(e) Responsable d'établissement
+                  </option>
+                  <option value="user">Autres</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex justify-between gap-2">
+              <div>
+                <label
+                  for="lastName"
+                  class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                  >Nom</label
+                >
+                <div class="mt-2">
+                  <input
+                    [(ngModel)]="user.lastName"
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    autocomplete="family-name"
+                    required
+                    placeholder="Votre nom"
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="firstName"
+                  class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                  >Prénom</label
+                >
+                <div class="mt-2">
+                  <input
+                    [(ngModel)]="user.firstName"
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    autocomplete="given-name"
+                    placeholder="Votre prénom"
+                    required
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                >Email</label
+              >
+              <div class="mt-2">
+                <input
+                  [(ngModel)]="user.email"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="Votre adresse email"
+                  required
+                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="password"
+                class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                >Mots de passe</label
+              >
+              <div class="mt-2">
+                <input
+                  [(ngModel)]="user.password"
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Mots de passe sécurisé"
+                  required
+                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-lg bg-[#9981C2] px-3 py-3 text-lg md:text-xl text-white shadow-sm hover:bg-[#6D9985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                Inscription
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative hidden w-0 flex-1 lg:block">
+    <img
+      class="absolute inset-0 h-full w-full object-cover"
+      src="../../../assets/images/lonely-microphone.webp"
+      alt=""
+    />
+  </div>
+</section>
