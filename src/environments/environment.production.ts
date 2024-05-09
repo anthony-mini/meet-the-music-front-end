@@ -1,6 +1,7 @@
 // Local environment configuration
 
 export const environment = {
-  production: false,
-  meetthemusicBackendUrl: 'http://localhost:3000',
+  production: true,
+  meetthemusicBackendUrl:
+    'https://production-back-meet-the-music-xwfb7.ondigitalocean.app/',
 };
