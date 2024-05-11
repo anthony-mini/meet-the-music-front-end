@@ -34,8 +34,14 @@ export class AuthService {
     localStorage.removeItem('access_token');
   }
 
-  // Méthode pour récupérer le token stocké dans le localStorage
   getToken(): boolean {
-    return !!localStorage.getItem('access_token');
+    if (typeof localStorage !== 'undefined') {
+      return !!localStorage.getItem('access_token');
+    }
+    return false;
+  }
+
+  isLoggedIn(): boolean {
+    return this.getToken();
   }
 }

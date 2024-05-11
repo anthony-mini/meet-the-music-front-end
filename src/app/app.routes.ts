@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './features/login/login.component';
-import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 import { SignUpComponent } from './features/sign-up/sign-up.component';
 import { HomeComponent } from './features/home/home.component';
+import { authGuard, isLoggedInGuard } from './core/services/auth.guard';
 
 export const routes: Routes = [
   {
@@ -13,11 +13,13 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [isLoggedInGuard],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
+    canActivate: [isLoggedInGuard],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent, canActivate: [authGuard] },
 ];
