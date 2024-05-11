@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home-nav-bar',
@@ -8,10 +9,26 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home-nav-bar.component.html',
   styleUrl: './home-nav-bar.component.scss',
 })
-export class HomeNavBarComponent {
+export class HomeNavBarComponent implements OnInit {
   mobileMenuOpen = false;
+
+  constructor(private authService: AuthService) {}
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  isLogged() {
+    return this.authService.isLoggedIn();
+  }
+
+  onLogout() {
+    return this.authService.logout();
+  }
+
+  ngOnInit(): void {
+    this.isLogged();
+
+    console.log(this.isLogged());
   }
 }
