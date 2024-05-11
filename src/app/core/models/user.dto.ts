@@ -20,3 +20,8 @@ export interface CreateUserDto {
   address: string;
   role: Role;
 }
+
+export interface SignInDto {
+  email: string;
+  password: string;
+}
