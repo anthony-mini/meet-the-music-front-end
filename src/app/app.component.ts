@@ -15,6 +15,8 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  title = 'meet-the-music-front-end';
+
   constructor(
     private authService: AuthService,
     private router: Router,
