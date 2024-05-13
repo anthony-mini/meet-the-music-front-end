@@ -15,7 +15,7 @@ export class ErrorHandlerService {
     console.error('handlerError:', error);
 
     if (error.status === 401) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     } else {
       this.snackBar.open(
         error.message || "Une erreur inconnue s'est produite",
