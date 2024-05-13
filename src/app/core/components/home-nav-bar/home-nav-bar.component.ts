@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeNavBarComponent implements OnInit {
   mobileMenuOpen = false;
+  userData: any;
 
   constructor(private authService: AuthService) {}
 
@@ -29,6 +30,8 @@ export class HomeNavBarComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged();
 
-    console.log(this.isLogged());
+    this.authService.getUserData().subscribe((userData) => {
+      console.log(userData);
+    });
   }
 }
