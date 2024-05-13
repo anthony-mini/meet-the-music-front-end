@@ -44,4 +44,10 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getToken();
   }
+
+  getUserInformation(): any {
+    if (localStorage) {
+      return this.http.get(`${this.baseUrl}/auth/token/me`);
+    }
+  }
 }
