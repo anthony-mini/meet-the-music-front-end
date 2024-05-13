@@ -30,8 +30,8 @@ export class HomeNavBarComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged();
 
-    this.authService.getUserData().subscribe((userData) => {
-      console.log(userData);
+    this.authService.getUserData().subscribe((data) => {
+      this.userData = data;
     });
   }
 }
