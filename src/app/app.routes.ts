@@ -7,7 +7,7 @@ import { authGuard, isLoggedInGuard } from './core/services/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
   },
   {
@@ -20,6 +20,6 @@ export const routes: Routes = [
     component: SignUpComponent,
     canActivate: [isLoggedInGuard],
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, canActivate: [authGuard] },
 ];
