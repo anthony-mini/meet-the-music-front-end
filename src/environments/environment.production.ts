@@ -3,5 +3,5 @@
 export const environment = {
   production: true,
   meetthemusicBackendUrl:
-    'https://production-back-meet-the-music-xwfb7.ondigitalocean.app/',
+    'https://production-back-meet-the-music-xwfb7.ondigitalocean.app',
 };
