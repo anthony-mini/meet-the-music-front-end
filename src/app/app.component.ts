@@ -20,11 +20,15 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) {}
 
+  title = 'meet-the-music-front-end';
+
   ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.authService.getUserInformation().subscribe();
-      });
+    this.authService.getUserInformation().subscribe(() => {
+      this.router.events
+        .pipe(filter((event) => event instanceof NavigationEnd))
+        .subscribe(() => {
+          this.authService.getUserInformation().subscribe();
+        });
+    });
   }
 }
