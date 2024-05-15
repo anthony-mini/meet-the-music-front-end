@@ -29,7 +29,7 @@ export class LoginComponent {
         // Gérer la réponse du serveur ici
         console.log(response);
         // Rediriger l'utilisateur vers une autre page
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       },
       (error) => {
         // Gérer l'erreur ici
