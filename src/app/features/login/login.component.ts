@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CreateUserDto } from 'src/app/core/models/user.dto';
+import { SignInDto } from 'src/app/core/models/user.dto';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
-import { Role } from '../../core/enums/role.enum';
-import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,25 +12,24 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  user: CreateUserDto = {
-    firstName: '',
-    lastName: '',
+  user: SignInDto = {
     email: '',
     password: '',
-    phone: '',
-    address: '',
-    role: Role.USER,
   };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
-    this.userService.createUser(this.user).subscribe(
+    this.authService.login(this.user.email, this.user.password).subscribe(
       (response) => {
-        console.log(this.user);
-
         // Gérer la réponse du serveur ici
         console.log(response);
+        // Rediriger l'utilisateur vers une autre page
+        this.router.navigate(['/home']);
       },
       (error) => {
         // Gérer l'erreur ici

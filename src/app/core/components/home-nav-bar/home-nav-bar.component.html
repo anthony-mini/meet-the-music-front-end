@@ -11,7 +11,8 @@
         alt=""
       />
     </a>
-    <div class="flex lg:hidden">
+
+    <div class="flex lg:hidden gap-2">
       <button
         type="button"
         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -118,9 +119,31 @@
         </button>
       </div>
 
-      <a routerLink="/login" class="text-sm font-semibold leading-6 text-white"
-        >Se connecter<span aria-hidden="true">&rarr;</span></a
-      >
+      @if (!isLogged()) {
+        <a
+          routerLink="/login"
+          class="text-sm font-semibold leading-6 text-white flex gap-2"
+        >
+          Se connecter<span aria-hidden="true">&rarr;</span>
+        </a>
+      } @else {
+        <button
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
+        >
+          <span
+            class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+            >{{ userData.initial }}</span
+          >
+        </button>
+
+        <a
+          routerLink="/login"
+          (click)="onLogout()"
+          class="text-sm font-semibold leading-6 text-white flex gap-2"
+        >
+          Se déconnecter<span aria-hidden="true">&rarr;</span>
+        </a>
+      }
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
@@ -136,14 +159,30 @@
       class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#0E1216] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
     >
       <div class="flex items-center justify-between">
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img
-            class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt=""
-          />
-        </a>
+        @if (isLogged()) {
+          <button class="-m-1.5 p-1.5 flex items-center gap-2">
+            <span
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
+            >
+              <span
+                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+                >{{ userData.initial }}</span
+              >
+            </span>
+            <p class="text-white font-[ClashDisplay-Medium]">
+              {{ userData.firstName }} {{ userData.lastName }}
+            </p>
+          </button>
+        } @else {
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img
+              class="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
+          </a>
+        }
         <button
           type="button"
           class="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -185,13 +224,25 @@
               >Communauté</a
             >
           </div>
-          <div class="py-6">
-            <a
-              routerLink="/login"
-              (click)="toggleMobileMenu()"
-              class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
-              >Se connecter</a
-            >
+          <div class="py-6" (click)="toggleMobileMenu()">
+            @if (!isLogged()) {
+              <a
+                routerLink="/login"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >
+                Se connecter
+              </a>
+            } @else {
+              <div class="flex justify-between items-center">
+                <a
+                  routerLink="/login"
+                  (click)="onLogout()"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+                >
+                  Se déconnecter
+                </a>
+              </div>
+            }
           </div>
         </div>
         <div
