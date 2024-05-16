@@ -10,6 +10,7 @@ import {
 } from '@angular/common/http';
 
 import { AuthInterceptor } from './core/services/auth-interceptor.service';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
