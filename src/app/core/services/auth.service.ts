@@ -9,7 +9,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   baseUrl: string;
-  isLogged!: boolean;
 
   private userData = new BehaviorSubject<any>(null);
 
@@ -32,6 +31,7 @@ export class AuthService {
         tap((response) => {
           // Traitez la réponse si nécessaire
           // Les cookies sont automatiquement gérés par le navigateur
+          this.userData.next(response);
           console.log('Logged in successfully', response);
         }),
       );
@@ -41,20 +41,13 @@ export class AuthService {
     this.http
       .post(`${this.baseUrl}/auth/token/logout`, {}, { withCredentials: true })
       .subscribe(() => {
-        this.userData.next(null);
+        this.userData.next(false);
         console.log('Logged out successfully');
       });
   }
 
-  getToken(): boolean {
-    if (typeof localStorage !== 'undefined') {
-      return !!localStorage.getItem('access_token');
-    }
-    return false;
-  }
-
   isLoggedIn(): boolean {
-    return this.getToken();
+    return !!this.userData.value;
   }
 
   getUserInformation(): any {
