@@ -8,6 +8,7 @@ import { routes } from '../app/app.routes';
 import { HttpErrorInterceptor } from './core/services/http-error-interceptor.service';
 
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { CommonModule } from '@angular/common';
       useClass: HttpErrorInterceptor,
       multi: true,
     },
+    CookieService,
   ],
 })
 export class AppModule {}

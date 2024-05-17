@@ -9,6 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
   baseUrl: string;
+
   private userData = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) {
@@ -20,39 +21,39 @@ export class AuthService {
     const encodedCredentials = btoa(`${email}:${password}`);
 
     return this.http
-      .get<{ access_token: string }>(`${this.baseUrl}/auth/token`, {
+      .get(`${this.baseUrl}/auth/token`, {
         headers: {
           Authorization: `Basic ${encodedCredentials}`,
         },
+        withCredentials: true,
       })
       .pipe(
         tap((response) => {
-          localStorage.setItem('access_token', response.access_token);
+          // Traitez la réponse si nécessaire
+          // Les cookies sont automatiquement gérés par le navigateur
+          this.userData.next(response);
+          console.log('Logged in successfully', response);
         }),
       );
   }
 
   logout() {
-    localStorage.removeItem('access_token');
-  }
-
-  getToken(): boolean {
-    if (typeof localStorage !== 'undefined') {
-      return !!localStorage.getItem('access_token');
-    }
-    return false;
+    this.http
+      .post(`${this.baseUrl}/auth/token/logout`, {}, { withCredentials: true })
+      .subscribe(() => {
+        this.userData.next(false);
+        console.log('Logged out successfully');
+      });
   }
 
   isLoggedIn(): boolean {
-    return this.getToken();
+    return !!this.userData.value;
   }
 
   getUserInformation(): any {
-    if (localStorage) {
-      return this.http
-        .get(`${this.baseUrl}/auth/token/me`)
-        .pipe(tap((data) => this.userData.next(data)));
-    }
+    return this.http
+      .get(`${this.baseUrl}/auth/token/me`, { withCredentials: true })
+      .pipe(tap((data) => this.userData.next(data)));
   }
 
   getUserData(): Observable<any> {
