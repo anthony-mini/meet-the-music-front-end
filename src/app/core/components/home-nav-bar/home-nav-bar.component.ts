@@ -20,7 +20,7 @@ export class HomeNavBarComponent implements OnInit {
   }
 
   isLogged() {
-    return this.authService.isLoggedIn();
+    return this.userData ? true : false;
   }
 
   onLogout() {
