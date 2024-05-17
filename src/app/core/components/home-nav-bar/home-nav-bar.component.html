@@ -1,13 +1,13 @@
 <header class="bg-[#0E1216]">
   <nav
-    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+    class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
     aria-label="Global"
   >
     <a routerLink="/" class="-m-1.5 p-1.5">
       <span class="sr-only">MeetTheMusic Company</span>
       <img
-        class="h-6 w-auto md:h-8 md:w-auto"
-        src="../../../../assets/logo/logo_meetthemusic.svg"
+        class="h-12 w-auto md:h-14 md:w-auto"
+        src="../../../../assets/logo/logo.svg"
         alt=""
       />
     </a>
@@ -177,8 +177,8 @@
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
             <img
-              class="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              class="h-10 w-auto"
+              src="../../../../assets/logo/logo.svg"
               alt=""
             />
           </a>
@@ -233,15 +233,13 @@
                 Se connecter
               </a>
             } @else {
-              <div class="flex justify-between items-center">
-                <a
-                  routerLink="/login"
-                  (click)="onLogout()"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
-                >
-                  Se déconnecter
-                </a>
-              </div>
+              <a
+                routerLink="/login"
+                (click)="onLogout()"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+              >
+                Se déconnecter
+              </a>
             }
           </div>
         </div>
