@@ -10,11 +10,16 @@ import {
 } from '@angular/common/http';
 
 import { AuthInterceptor } from './core/services/auth-interceptor.service';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withInterceptors([AuthInterceptor])),
     importProvidersFrom(HttpClientModule),
+    provideToastr(),
+    provideAnimations(),
   ],
 };
