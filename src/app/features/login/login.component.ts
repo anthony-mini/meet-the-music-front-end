@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CustomToastrComponent } from 'src/app/core/components/custom-toastr/custom-toastr.component';
 import { SuccessNotificationComponent } from 'src/app/core/components/custom-toastr/success-notification/success-notification.component';
 import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
+import { ErrorNotificationComponent } from 'src/app/core/components/custom-toastr/error-notification/error-notification.component';
 
 @Component({
   selector: 'app-login',
@@ -60,6 +61,20 @@ export class LoginComponent {
     }
   }
 
+  showUnsuccessfulLoginMessage(title: string, message: string) {
+    const config: Partial<IndividualConfig> = {
+      toastComponent: ErrorNotificationComponent,
+      enableHtml: true,
+      closeButton: false,
+      tapToDismiss: true,
+    };
+
+    const toastRef = this.toastr.show(message, title, config);
+    if (toastRef && toastRef.toastRef) {
+      toastRef.toastRef.componentInstance.message = message;
+    }
+  }
+
   onSubmit() {
     this.authService.login(this.user.email, this.user.password).subscribe(
       (response) => {
@@ -77,6 +92,10 @@ export class LoginComponent {
       },
       (error) => {
         // Gérer l'erreur ici
+        this.showUnsuccessfulLoginMessage(
+          'Connexion échouée',
+          'Veuillez vérifier vos identifiants',
+        );
         console.error(error);
       },
     );
