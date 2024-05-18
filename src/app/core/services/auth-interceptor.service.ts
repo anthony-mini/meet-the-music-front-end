@@ -9,10 +9,9 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token = localStorage.getItem('access_token');
 
-  if (isTokenExpired(token)) {
-    console.log('Token expired');
-    localStorage.removeItem('access_token');
+  if (token && isTokenExpired(token)) {
     router.navigate(['/login']);
+    localStorage.removeItem('access_token');
     return next(req);
   }
 
