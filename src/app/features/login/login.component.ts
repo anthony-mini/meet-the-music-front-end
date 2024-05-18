@@ -4,6 +4,11 @@ import { SignInDto } from 'src/app/core/models/user.dto';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { ToastrService } from 'ngx-toastr';
+
+import { CustomToastrComponent } from 'src/app/core/components/custom-toastr/custom-toastr.component';
+import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,7 +26,23 @@ export class LoginComponent {
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
+
+  showSuccess(title: string, message: string) {
+    const config: Partial<IndividualConfig> = {
+      toastComponent: CustomToastrComponent,
+      enableHtml: true,
+      closeButton: false,
+      tapToDismiss: true,
+    };
+
+    const toastRef = this.toastr.show(message, title, config);
+    if (toastRef && toastRef.toastRef) {
+      toastRef.toastRef.componentInstance.title = title;
+      toastRef.toastRef.componentInstance.message = message;
+    }
+  }
 
   onSubmit() {
     this.authService.login(this.user.email, this.user.password).subscribe(
