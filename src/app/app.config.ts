@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([AuthInterceptor])),
     importProvidersFrom(HttpClientModule),
     provideToastr({
-      timeOut: 0,
+      timeOut: 2500,
       positionClass: 'toast-bottom-full-width',
       preventDuplicates: true,
       toastComponent: CustomToastrComponent,
