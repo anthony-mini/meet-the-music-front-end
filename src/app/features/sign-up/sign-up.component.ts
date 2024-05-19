@@ -17,16 +17,18 @@ import { ErrorNotificationComponent } from 'src/app/core/components/custom-toast
 import { SuccessNotificationComponent } from 'src/app/core/components/custom-toastr/success-notification/success-notification.component';
 import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
 import { ToastrService } from 'ngx-toastr';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, NgClass],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent {
   userForm: FormGroup;
+  isSubmitted = false;
 
   refex = new RegExp(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*\*])[A-Za-z\d!@#$%^&*\*]{8,}$/,
@@ -49,6 +51,8 @@ export class SignUpComponent {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
+
     if (this.userForm.invalid) {
       this.showUnsuccessfulSignUpMessage(
         'Formulaire invalide',
