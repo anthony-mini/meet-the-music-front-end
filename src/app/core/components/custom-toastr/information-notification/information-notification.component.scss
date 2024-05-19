@@ -8,7 +8,6 @@
 ::ng-deep .toast-bottom-full-width {
   bottom: 30px;
   padding: 0px 20px;
-  width: 100%; // Default width
 
   @media (min-width: 600px) {
     width: 40%;
