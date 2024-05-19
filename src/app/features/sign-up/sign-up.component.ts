@@ -50,7 +50,7 @@ export class SignUpComponent {
     });
   }
 
-  onSubmit() {
+  onSubmitRegistratration() {
     this.isSubmitted = true;
 
     if (this.userForm.invalid) {
