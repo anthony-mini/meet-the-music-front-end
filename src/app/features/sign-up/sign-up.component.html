@@ -29,7 +29,7 @@
         <div>
           <form
             [formGroup]="userForm"
-            (ngSubmit)="onSubmit()"
+            (ngSubmit)="onSubmitRegistration()"
             method="POST"
             class="space-y-8"
           >
@@ -73,6 +73,10 @@
                     required
                     placeholder="Votre nom"
                     class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-red-400 ring-2':
+                        userForm.get('lastName')?.invalid && isSubmitted
+                    }"
                   />
                 </div>
               </div>
@@ -92,6 +96,10 @@
                     placeholder="Votre prénom"
                     required
                     class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-red-400 ring-2':
+                        userForm.get('firstName')?.invalid && isSubmitted
+                    }"
                   />
                 </div>
               </div>
@@ -112,6 +120,10 @@
                   placeholder="Votre adresse email"
                   required
                   class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  [ngClass]="{
+                    'ring-red-400 ring-2':
+                      userForm.get('email')?.invalid && isSubmitted
+                  }"
                 />
               </div>
             </div>
@@ -127,10 +139,14 @@
                   formControlName="password"
                   id="password"
                   type="password"
-                  autocomplete="current-password"
+                  autocomplete="new-password"
                   placeholder="Mot de passe sécurisé"
                   required
                   class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  [ngClass]="{
+                    'ring-red-400 ring-2':
+                      userForm.get('password')?.invalid && isSubmitted
+                  }"
                 />
               </div>
             </div>
