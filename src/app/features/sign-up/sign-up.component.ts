@@ -30,9 +30,7 @@ export class SignUpComponent {
   userForm: FormGroup;
   isSubmitted = false;
 
-  refex = new RegExp(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*\*])[A-Za-z\d!@#$%^&*\*]{8,}$/,
-  );
+  refex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
 
   constructor(
     private userService: UserService,
@@ -64,7 +62,7 @@ export class SignUpComponent {
     if (!this.refex.test(this.userForm.get('password')?.value)) {
       this.showUnsuccessfulSignUpMessage(
         'Mot de passe faible',
-        '8+ caractères, 1 majuscule, 1 chiffre, 1 spécial (!@#$%^&*)',
+        '8+ caractères, 1 majuscule, 1 chiffre minimum.',
       );
       return;
     }
