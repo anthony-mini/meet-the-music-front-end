@@ -27,20 +27,24 @@
       <!-- Form starts here -->
       <div class="mt-10">
         <div>
-          <form (submit)="onSubmit()" method="POST" class="space-y-8">
+          <form
+            [formGroup]="userForm"
+            (ngSubmit)="onSubmitRegistration()"
+            method="POST"
+            class="space-y-8"
+          >
             <div>
               <label
                 for="role"
                 class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
               >
-                Vous êtes ?</label
-              >
+                Vous êtes ?
+              </label>
 
               <div class="mt-2">
                 <select
-                  [(ngModel)]="user.role"
+                  formControlName="role"
                   id="role"
-                  name="role"
                   required
                   class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
                 >
@@ -62,14 +66,20 @@
                 >
                 <div class="mt-2">
                   <input
-                    [(ngModel)]="user.lastName"
+                    formControlName="lastName"
                     id="lastName"
-                    name="lastName"
                     type="text"
                     autocomplete="family-name"
                     required
                     placeholder="Votre nom"
-                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-[#DB5341]/60 ring-2':
+                        userForm.get('lastName')?.invalid && isSubmitted,
+                      'ring-white/10': !(
+                        userForm.get('lastName')?.invalid && isSubmitted
+                      )
+                    }"
                   />
                 </div>
               </div>
@@ -82,14 +92,20 @@
                 >
                 <div class="mt-2">
                   <input
-                    [(ngModel)]="user.firstName"
+                    formControlName="firstName"
                     id="firstName"
-                    name="firstName"
                     type="text"
                     autocomplete="given-name"
                     placeholder="Votre prénom"
                     required
-                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-[#DB5341]/60 ring-2':
+                        userForm.get('firstName')?.invalid && isSubmitted,
+                      'ring-white/10': !(
+                        userForm.get('firstName')?.invalid && isSubmitted
+                      )
+                    }"
                   />
                 </div>
               </div>
@@ -103,14 +119,20 @@
               >
               <div class="mt-2">
                 <input
-                  [(ngModel)]="user.email"
+                  formControlName="email"
                   id="email"
-                  name="email"
                   type="email"
                   autocomplete="email"
                   placeholder="Votre adresse email"
                   required
-                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  [ngClass]="{
+                    'ring-[#DB5341]/60 ring-2':
+                      userForm.get('email')?.invalid && isSubmitted,
+                    'ring-white/10': !(
+                      userForm.get('email')?.invalid && isSubmitted
+                    )
+                  }"
                 />
               </div>
             </div>
@@ -119,18 +141,24 @@
               <label
                 for="password"
                 class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
-                >Mots de passe</label
+                >Mot de passe</label
               >
               <div class="mt-2">
                 <input
-                  [(ngModel)]="user.password"
+                  formControlName="password"
                   id="password"
-                  name="password"
                   type="password"
-                  autocomplete="current-password"
-                  placeholder="Mots de passe sécurisé"
+                  autocomplete="new-password"
+                  placeholder="Mot de passe sécurisé"
                   required
-                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 ring-white/10 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                  [ngClass]="{
+                    'ring-[#DB5341]/60 ring-2':
+                      userForm.get('password')?.invalid && isSubmitted,
+                    'ring-white/10': !(
+                      userForm.get('password')?.invalid && isSubmitted
+                    )
+                  }"
                 />
               </div>
             </div>
