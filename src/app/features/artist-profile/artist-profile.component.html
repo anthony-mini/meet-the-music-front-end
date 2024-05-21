@@ -1,1 +1,44 @@
-<p>artist-profile works!</p>
+<section class="flex flex-col items-center justify-center px-6 py-12 lg:px-12">
+  <div
+    class="banner-profile-artist container flex flex-row justify-left items-center gap-8 mx-auto sm:px-6 lg:px-8"
+  >
+    <div>
+      <span
+        class="inline-flex h-40 w-40 items-center justify-center rounded-full bg-[#7D838C]"
+      >
+        <span
+          class="text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
+          >{{ initials }}</span
+        >
+      </span>
+    </div>
+    <div class="flex flex-col items-start gap-4">
+      <span
+        class="px-2 py-0 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-sm md:text-base lg:text-md uppercase"
+        >{{ artist?.user?.role }}</span
+      >
+      <h2 class="banner-title text-6xl text-white flex gap-3">
+        {{ artist?.user?.firstName }}<span>{{ artist?.user?.lastName }}</span>
+      </h2>
+
+      <div class="flex gap-2 items-center">
+        @if (artist?.user?.city) {
+          <p
+            class="text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+          >
+            {{ artist?.user?.city }}
+          </p>
+          <span
+            class="inline-flex h-1 w-1 items-center justify-center rounded-full bg-[#7D838C]"
+          ></span>
+        }
+
+        <p
+          class="text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+        >
+          Rejoint {{ createdDate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

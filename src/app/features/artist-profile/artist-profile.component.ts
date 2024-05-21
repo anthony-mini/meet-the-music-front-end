@@ -11,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArtistProfileComponent implements OnInit {
   alias!: string;
-  artistProfile: any;
+  artist: any;
+  initials!: string;
+  createdDate!: string;
 
   constructor(
     private artistProfileService: ArtistProfileService,
@@ -19,6 +21,7 @@ export class ArtistProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Get the alias from the URL and load the artist profile
     this.alias = this.route.snapshot.paramMap.get('alias')!;
     this.loadArtistProfile();
   }
@@ -27,7 +30,18 @@ export class ArtistProfileComponent implements OnInit {
     this.artistProfileService
       .getProfileByAlias(this.alias)
       .subscribe((profile) => {
-        this.artistProfile = profile;
+        this.artist = profile.artistProfile;
+        this.initials = profile.initials;
+
+        const date = new Date(profile.artistProfile.createdAt);
+        this.createdDate = date.toLocaleDateString('fr-FR', {
+          month: 'long',
+          year: 'numeric',
+        });
+
+        console.log(this.artist);
+        console.log(this.initials);
+        console.log(this.createdDate);
       });
   }
 }
