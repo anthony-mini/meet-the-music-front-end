@@ -1,30 +1,35 @@
 <section class="flex flex-col items-center justify-center px-6 py-12 lg:px-12">
   <div
-    class="banner-profile-artist container flex flex-row justify-left items-center gap-8 mx-auto sm:px-6 lg:px-8"
+    class="banner-profile-artist container flex flex-row justify-left items-center p-5 xl:p-14 gap-3 lg:gap-6 xl:gap-8 mx-auto lg:px-8 rounded-2xl xl:rounded-3xl"
   >
     <div>
       <span
-        class="inline-flex h-40 w-40 items-center justify-center rounded-full bg-[#7D838C]"
+        class="inline-flex w-16 h-16 lg:w-28 lg:h-28 xl:h-40 xl:w-40 items-center justify-center rounded-full bg-[#7D838C]"
       >
         <span
-          class="text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
+          class="text-2xl lg:text-5xl xl:text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
           >{{ initials }}</span
         >
       </span>
     </div>
-    <div class="flex flex-col items-start gap-4">
+    <div class="flex flex-col items-start gap-y-2">
       <span
-        class="px-2 py-0 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-sm md:text-base lg:text-md uppercase"
+        class="py-0 px-1 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs md:text-sm uppercase"
         >{{ artist?.user?.role }}</span
       >
-      <h2 class="banner-title text-6xl text-white flex gap-3">
-        {{ artist?.user?.firstName }}<span>{{ artist?.user?.lastName }}</span>
+      <h2 class="banner-title text-xl xl:text-6xl text-white flex gap-3">
+        <span
+          class="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-[230px] sm:max-w-fit block"
+        >
+          {{ artist?.user?.firstName }}
+          {{ artist?.user?.lastName }}
+        </span>
       </h2>
 
       <div class="flex gap-2 items-center">
         @if (artist?.user?.city) {
           <p
-            class="text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+            class="text-xs xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
           >
             {{ artist?.user?.city }}
           </p>
@@ -34,7 +39,7 @@
         }
 
         <p
-          class="text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+          class="text-xs xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
         >
           Rejoint {{ createdDate }}
         </p>
