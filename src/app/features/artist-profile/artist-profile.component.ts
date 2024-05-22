@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtistProfileService } from '../../core/services/artist-profile.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-artist-profile',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './artist-profile.component.html',
   styleUrl: './artist-profile.component.scss',
 })

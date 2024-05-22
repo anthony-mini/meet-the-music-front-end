@@ -207,23 +207,74 @@
     class="description-container container mx-auto flex flex-col md:flex-row gap-10"
   >
     <div
-      class="bg-[#4B515A] flex-1 w-full md:w-36 p-16 justify-left rounded-3xl"
+      class="bg-[#4B515A] flex-1 w-full md:w-36 py-6 px-10 justify-left rounded-2xl"
     >
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae magnam
-      eveniet laboriosam inventore id voluptates recusandae quod tempora, dolor,
-      quas dicta, eaque porro! Error harum, quas excepturi earum ipsum sapiente
-      id aut quasi sint pariatur quaerat? Quasi accusamus, blanditiis labore
-      omnis nobis ducimus, animi possimus aperiam inventore similique ullam
-      dolorem at quod adipisci eveniet quos commodi, perspiciatis incidunt.
-      Voluptatibus delectus, quos reprehenderit fugiat ducimus, sequi nemo autem
-      odit illum tenetur debitis, qui necessitatibus. Voluptatem repellat
-      similique obcaecati eaque at, iusto iste praesentium? Sed, asperiores
-      odit. Delectus nobis officiis alias maiores commodi blanditiis et
-      doloribus corporis sequi unde. Nihil, reiciendis sit.
+      <h4
+        class="font-[ClashDisplay-Medium] text-white text-xl sm:text-2xl mb-3"
+      >
+        À propos
+      </h4>
+
+      @if (!artist?.user?.description) {
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white mb-3"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
+          temporibus eligendi? Reiciendis repellendus quidem veniam excepturi
+          beatae fugiat, accusamus dolor. Quas aperiam aspernatur molestias
+          ipsam sint atque expedita! Tenetur nisi ab tempora qui non corporis
+          sequi, alias perspiciatis incidunt illo consequuntur sit totam
+          voluptas dolor, asperiores veniam animi doloremque quod commodi rerum
+          dicta officiis. Id reiciendis maxime expedita rem vitae?
+        </p>
+      } @else {
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white mb-3"
+        >
+          {{ artist?.user?.description }}
+        </p>
+      }
+
+      <h4
+        class="font-[ClashDisplay-Medium] text-white text-xl sm:text-2xl mb-3"
+      >
+        Pratique musicale
+      </h4>
+
+      @if (!artist?.user.musicalPractice) {
+        <ul class="list-disc list-inside">
+          <li
+            class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white"
+          >
+            Lorem ipsum dolor sit amet.
+          </li>
+          <li
+            class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white"
+          >
+            Lorem ipsum dolor sit amet.
+          </li>
+        </ul>
+      } @else {
+        <ul class="list-disc list-inside">
+          <li
+            *ngFor="let practice of artist?.user.musicalPractice"
+            class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white"
+          >
+            {{ practice }}
+          </li>
+        </ul>
+      }
     </div>
     <div
-      class="bg-[#4B515A] flex-none w-full md:w-72 p-16 justify-left rounded-3xl"
-    ></div>
+      class="bg-[#4B515A] flex-none w-full md:w-72 py-6 px-10 justify-left rounded-2xl relative"
+    >
+      <h4
+        class="font-[ClashDisplay-Medium] text-white text-xl sm:text-2xl mb-3"
+      >
+        Contact
+      </h4>
+      <div class="w-full border-t border-white"></div>
+    </div>
   </div>
 
   <!-- END DESCRIPTION -->
