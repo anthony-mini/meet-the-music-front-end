@@ -6,15 +6,23 @@ import { inject } from '@angular/core';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { ErrorNotificationComponent } from '../components/custom-toastr/error-notification/error-notification.component';
 
+import { AuthService } from './auth.service';
+
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
+  const authService = inject(AuthService);
 
   const token = localStorage.getItem('access_token');
 
   if (token && isTokenExpired(token)) {
+    authService.logout();
+
     router.navigate(['/login']);
+
     localStorage.removeItem('access_token');
+
     showErrorMessage('La session a expiré', 'Veuillez vous reconnecter');
+
     return next(req);
   }
 

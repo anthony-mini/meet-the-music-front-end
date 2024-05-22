@@ -28,12 +28,14 @@ export class AuthService {
       .pipe(
         tap((response) => {
           localStorage.setItem('access_token', response.access_token);
+          this.getUserInformation().subscribe(); // Load user info after login
         }),
       );
   }
 
   logout() {
     localStorage.removeItem('access_token');
+    this.userData.next(null); // clear userData on logout
   }
 
   getToken(): boolean {
