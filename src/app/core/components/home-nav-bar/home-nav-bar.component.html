@@ -126,8 +126,27 @@
         >
           Se connecter<span aria-hidden="true">&rarr;</span>
         </a>
-      } @else {
+      } @else if (userData.role === 'artist') {
         <button
+          routerLink="/artist/{{ userData.alias }}"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
+        >
+          <span
+            class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+            >{{ userData.initial }}</span
+          >
+        </button>
+
+        <a
+          routerLink="/login"
+          (click)="onLogout()"
+          class="text-sm font-semibold leading-6 text-white flex gap-2"
+        >
+          Se déconnecter<span aria-hidden="true">&rarr;</span>
+        </a>
+      } @else if (userData.role === 'promoter') {
+        <button
+          routerLink="/establishment/{{ userData.alias }}"
           class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
         >
           <span
@@ -159,8 +178,30 @@
       class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#0E1216] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
     >
       <div class="flex items-center justify-between">
-        @if (isLogged()) {
-          <button class="-m-1.5 p-1.5 flex items-center gap-2">
+        @if (isLogged() && userData.role === 'artist') {
+          <button
+            (click)="toggleMobileMenu()"
+            routerLink="/artist/{{ userData.alias }}"
+            class="-m-1.5 p-1.5 flex items-center gap-2"
+          >
+            <span
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
+            >
+              <span
+                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+                >{{ userData.initial }}</span
+              >
+            </span>
+            <p class="text-white font-[ClashDisplay-Medium] capitalize">
+              {{ userData.firstName }} {{ userData.lastName }}
+            </p>
+          </button>
+        } @else if (isLogged() && userData.role === 'promoter') {
+          <button
+            (click)="toggleMobileMenu()"
+            routerLink="/establishment/{{ userData.alias }}"
+            class="-m-1.5 p-1.5 flex items-center gap-2"
+          >
             <span
               class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
             >

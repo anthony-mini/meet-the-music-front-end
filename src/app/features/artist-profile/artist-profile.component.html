@@ -1,0 +1,207 @@
+<section
+  class="mx-auto flex flex-col max-w-7xl items-center justify-between p-6 lg:px-8"
+>
+  <!-- START BANNER -->
+  <div
+    class="banner-profile-artist container flex flex-row justify-left items-center p-4 sm:p-6 xl:p-14 gap-3 sm:gap-6 lg:gap-6 xl:gap-8 mx-auto lg:px-8 rounded-2xl sm:rounded-3xl xl:rounded-3xl"
+  >
+    <div>
+      <span
+        class="inline-flex w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 xl:h-40 xl:w-40 items-center justify-center rounded-full bg-[#7D838C]"
+      >
+        <span
+          class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
+          >{{ initials }}</span
+        >
+      </span>
+    </div>
+    <div class="flex flex-col items-start">
+      <span
+        class="py-0 px-1 sm:px-2 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs sm:text-sm md:text-sm uppercase mb-1"
+        >{{ artist?.user?.role }}</span
+      >
+      <h2
+        class="banner-title text-xl sm:text-2xl xl:text-6xl text-white flex gap-3"
+      >
+        <span
+          class="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-[230px] sm:max-w-fit block capitalize"
+        >
+          {{ artist?.user?.firstName }}
+          {{ artist?.user?.lastName }}
+        </span>
+      </h2>
+
+      <p
+        class="text-sm sm:text-base xl:text-base font-[ClashDisplay-Medium] lowercase text-[#6D9985] mb-1"
+      >
+        &commat;{{ artist?.user?.alias }}
+      </p>
+
+      <div class="flex flex-col">
+        <div class="flex gap-1 items-center mb-3">
+          <p
+            class="text-xs sm:text-sm xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+          >
+            {{ artist?.user?.city }}
+          </p>
+          <span
+            class="inline-flex h-1 w-1 items-center justify-center rounded-full bg-[#7D838C]"
+          ></span>
+
+          <p
+            class="text-xs sm:text-sm xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C] overflow-ellipsis"
+          >
+            {{ createdDate }}
+          </p>
+        </div>
+        <div class="container-social-media flex items-center gap-10">
+          <div class="flex gap-2 items-center">
+            <button
+              class="social-media-button p-1 rounded-lg transform transition duration-500 hover:scale-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                class="w-5 h-5 sm:w-6 sm:h-6"
+              >
+                <g
+                  fill="#ffffff"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(5.12,5.12)">
+                    <path
+                      d="M30,11c-3.60156,0 -7,1.78906 -9,4.6875v3.5l0.3125,0.21875l0.375,-1c1.39844,-3.30078 4.71875,-5.40625 8.21875,-5.40625c5,0 9,4 9,9v2l1.5,-0.59375c0.69922,-0.30078 1.39453,-0.40625 2.09375,-0.40625c3,0 5.5,2.5 5.5,5.5c0,3 -2.5,5.5 -5.5,5.5h-21.5v2h21.5c4.10156,0 7.5,-3.39844 7.5,-7.5c0,-4.10156 -3.39844,-7.5 -7.5,-7.5c-0.5,0 -1,0.08594 -1.5,0.1875c-0.5,-5.69922 -5.19922,-10.1875 -11,-10.1875zM17,16c-0.69922,0 -1.39844,0.08594 -2,0.1875v19.8125h2zM18,16v20h2v-19.5c-0.60156,-0.19922 -1.30078,-0.39844 -2,-0.5zM14,16.5c-0.69922,0.30078 -1.39844,0.60156 -2,1v18.5h2zM11,18.3125c-0.80078,0.69922 -1.5,1.59375 -2,2.59375v15.09375h2zM6.5,22c-0.17578,0.01172 -0.35156,0.04297 -0.5,0.09375v13.8125c0.30078,0.10156 0.69922,0.09375 1,0.09375h1v-13.90625c-0.30078,-0.10156 -0.69922,-0.09375 -1,-0.09375c-0.14844,0 -0.32422,-0.01172 -0.5,0zM5,22.3125c-0.69922,0.19922 -1.39844,0.5 -2,1v11.375c0.60156,0.39844 1.30078,0.80078 2,1zM2,24.09375c-1.19922,1.30078 -2,3.00781 -2,4.90625c0,1.89844 0.80078,3.60547 2,4.90625z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button
+              class="social-media-button p-1 rounded-lg transform transition duration-500 hover:scale-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                class="w-5 h-5 sm:w-6 sm:h-6"
+              >
+                <g
+                  fill="#ffffff"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(8.53333,8.53333)">
+                    <path
+                      d="M15,3c-6.6,0 -12,5.4 -12,12c0,6.6 5.4,12 12,12c6.6,0 12,-5.4 12,-12c0,-6.6 -5.4,-12 -12,-12zM19.731,21c-0.22,0 -0.33,-0.11 -0.55,-0.22c-1.65,-0.991 -3.74,-1.54 -5.94,-1.54c-1.21,0 -2.53,0.22 -3.63,0.44c-0.22,0 -0.44,0.11 -0.55,0.11c-0.44,0 -0.77,-0.33 -0.77,-0.77c0,-0.44 0.22,-0.77 0.66,-0.77c1.43,-0.33 2.861,-0.55 4.401,-0.55c2.53,0 4.84,0.66 6.82,1.76c0.22,0.22 0.44,0.33 0.44,0.77c-0.222,0.55 -0.552,0.77 -0.881,0.77zM20.94,17.921c-0.22,0 -0.44,-0.11 -0.66,-0.22c-1.87,-1.21 -4.511,-1.87 -7.37,-1.87c-1.43,0 -2.751,0.22 -3.74,0.44c-0.22,0.11 -0.33,0.11 -0.55,0.11c-0.55,0 -0.881,-0.44 -0.881,-0.881c0,-0.55 0.22,-0.77 0.77,-0.991c1.32,-0.33 2.641,-0.66 4.511,-0.66c3.08,0 5.94,0.77 8.361,2.2c0.33,0.22 0.55,0.55 0.55,0.881c-0.111,0.55 -0.44,0.991 -0.991,0.991zM22.37,14.4c-0.22,0 -0.33,-0.11 -0.66,-0.22c-2.2,-1.21 -5.39,-1.98 -8.47,-1.98c-1.54,0 -3.19,0.22 -4.621,0.55c-0.22,0 -0.33,0.11 -0.66,0.11c-0.66,0.111 -1.1,-0.44 -1.1,-1.099c0,-0.659 0.33,-0.991 0.77,-1.1c1.761,-0.441 3.631,-0.661 5.611,-0.661c3.41,0 6.93,0.77 9.681,2.2c0.33,0.22 0.66,0.55 0.66,1.1c-0.11,0.66 -0.551,1.1 -1.211,1.1z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button
+              class="social-media-button p-1 rounded-lg transform transition duration-500 hover:scale-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                class="w-5 h-5 sm:w-6 sm:h-6"
+              >
+                <g
+                  fill="#ffffff"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(10.66667,10.66667)">
+                    <path
+                      d="M2.36719,3l7.0957,10.14063l-6.72266,7.85938h2.64063l5.26367,-6.16992l4.31641,6.16992h6.91016l-7.42187,-10.625l6.29102,-7.375h-2.59961l-4.86914,5.6875l-3.97266,-5.6875zM6.20703,5h2.04883l9.77734,14h-2.03125z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <button
+              class="social-media-button p-1 rounded-lg transform transition duration-500 hover:scale-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0,0,256,256"
+                class="w-5 h-5 sm:w-6 sm:h-6"
+              >
+                <g
+                  fill="#ffffff"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(10.66667,10.66667)">
+                    <path
+                      d="M21.582,6.186c-0.23,-0.86 -0.908,-1.538 -1.768,-1.768c-1.56,-0.418 -7.814,-0.418 -7.814,-0.418c0,0 -6.254,0 -7.814,0.418c-0.86,0.23 -1.538,0.908 -1.768,1.768c-0.418,1.56 -0.418,5.814 -0.418,5.814c0,0 0,4.254 0.418,5.814c0.23,0.86 0.908,1.538 1.768,1.768c1.56,0.418 7.814,0.418 7.814,0.418c0,0 6.254,0 7.814,-0.418c0.861,-0.23 1.538,-0.908 1.768,-1.768c0.418,-1.56 0.418,-5.814 0.418,-5.814c0,0 0,-4.254 -0.418,-5.814zM10,14.598v-5.196c0,-0.385 0.417,-0.625 0.75,-0.433l4.5,2.598c0.333,0.192 0.333,0.674 0,0.866l-4.5,2.598c-0.333,0.193 -0.75,-0.048 -0.75,-0.433z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden sm:flex">
+            <button
+              class="banner-action-button rounded-lg text-white h-5 px-4 py-5 bg-[#6d9985]"
+            >
+              Envoyer un Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END BANNER -->
+
+  <!-- START DESCRIPTION -->
+</section>

@@ -111,6 +111,62 @@
               </div>
             </div>
 
+            <div class="flex justify-between gap-2">
+              <div>
+                <label
+                  for="zipcode"
+                  class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                  >Code Postal</label
+                >
+                <div class="mt-2">
+                  <select
+                    formControlName="zipCode"
+                    id="zipCode"
+                    required
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-[#DB5341]/60 ring-2':
+                        userForm.get('zipcode')?.invalid && isSubmitted,
+                      'ring-white/10': !(
+                        userForm.get('zipcode')?.invalid && isSubmitted
+                      )
+                    }"
+                  >
+                    <option value="" disabled selected></option>
+                    @for (zip of zipcodes; track $index) {
+                      <option value="{{ zip }}">{{ zip }}</option>
+                    }
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="city"
+                  class="block text-base md:text-lg font-medium leading-2 text-[#ffffff]"
+                  >Ville</label
+                >
+                <div class="mt-2">
+                  <input
+                    formControlName="city"
+                    id="city"
+                    type="text"
+                    autocomplete="address-level2"
+                    placeholder="Votre ville"
+                    required
+                    class="block w-full rounded-lg border-0 py-3 shadow-sm ring-1 ring-inset bg-white/5 placeholder:text-gray-500 text-[#ffffff] focus:ring-2 focus:ring-inset focus:ring-[#9981C2] sm:text-base md:text-lg sm:leading-2"
+                    [ngClass]="{
+                      'ring-[#DB5341]/60 ring-2':
+                        userForm.get('city')?.invalid && isSubmitted,
+                      'ring-white/10': !(
+                        userForm.get('city')?.invalid && isSubmitted
+                      )
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div>
               <label
                 for="email"
