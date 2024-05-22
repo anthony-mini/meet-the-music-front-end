@@ -18,8 +18,11 @@
     <div class="flex flex-col items-start">
       <span
         class="py-0 px-1 sm:px-2 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs sm:text-sm md:text-sm uppercase mb-1"
-        >{{ artist?.user?.role }}</span
       >
+        @if (artist?.user.email) {
+          Artiste
+        }
+      </span>
       <h2
         class="banner-title text-xl sm:text-2xl xl:text-6xl text-white flex gap-3"
       >
@@ -273,7 +276,7 @@
       >
         Contact
       </h4>
-      <div class="flex item-center flex-col">
+      <div class="flex item-center justify-between md:flex-col">
         <p
           class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
         >
@@ -285,8 +288,8 @@
           {{ artist?.user.city }}
         </p>
       </div>
-      <div class="w-full border-t border-white mt-2 mb-2"></div>
-      <div class="flex item-center flex-col">
+      <div class="border-t border-gray-100/20 mt-3 mb-3 mx-auto"></div>
+      <div class="flex item-center justify-between md:flex-col">
         <p
           class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
         >
@@ -295,11 +298,13 @@
         <p
           class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider capitalize"
         >
-          {{ artist?.user.role }}
+          @if (artist?.user.email) {
+            Artiste
+          }
         </p>
       </div>
-      <div class="w-full border-t border-white mt-2 mb-2"></div>
-      <div class="flex item-center flex-col">
+      <div class="border-t border-gray-100/20 mt-3 mb-3 mx-auto"></div>
+      <div class="flex item-center justify-between md:flex-col">
         <p
           class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
         >
@@ -311,21 +316,27 @@
           {{ artist?.user.email }}
         </p>
       </div>
-      @if (artist?.user.phone) {
-        <div class="w-full border-t border-white mt-2 mb-2"></div>
-        <div class="flex item-center flex-col">
-          <p
-            class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
-          >
-            Téléphone :
-          </p>
+      <div class="border-t border-gray-100/20 mt-3 mb-3 mx-auto"></div>
+      <div class="flex item-center justify-between md:flex-col">
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
+        >
+          Téléphone :
+        </p>
+        @if (artist?.user.phone) {
           <p
             class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider lowercase"
           >
             {{ artist?.user.phone }}
           </p>
-        </div>
-      }
+        } @else {
+          <p
+            class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider lowercase"
+          >
+            Non renseigné
+          </p>
+        }
+      </div>
     </div>
   </div>
 
