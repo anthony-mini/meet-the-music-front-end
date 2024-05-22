@@ -16,3 +16,18 @@
     background: var(--DesignLab-Black, #9981c2);
   }
 }
+
+.banner-action-button {
+  font-family: 'ClashDisplay-Medium';
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--DesignLab-Black, #9981c2);
+  }
+}
