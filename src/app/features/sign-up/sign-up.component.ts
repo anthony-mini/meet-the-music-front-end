@@ -11,7 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Role } from '../../core/enums/role.enum';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 import { ErrorNotificationComponent } from 'src/app/core/components/custom-toastr/error-notification/error-notification.component';
 import { SuccessNotificationComponent } from 'src/app/core/components/custom-toastr/success-notification/success-notification.component';
@@ -23,7 +23,7 @@ import { ZipcodeData, ZIP_CODE_DATA } from '../../core/interfaces/zipcode-data';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgClass],
+  imports: [FormsModule, ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
