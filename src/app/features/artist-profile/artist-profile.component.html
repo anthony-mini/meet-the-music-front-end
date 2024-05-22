@@ -207,7 +207,7 @@
     class="description-container container mx-auto flex flex-col md:flex-row gap-10"
   >
     <div
-      class="bg-[#4B515A] flex-1 w-full md:w-36 py-6 px-10 justify-left rounded-2xl"
+      class="bg-[#4B515A] flex-1 w-full md:w-36 py-4 px-6 justify-left rounded-2xl"
     >
       <h4
         class="font-[ClashDisplay-Medium] text-white text-xl sm:text-2xl mb-3"
@@ -266,14 +266,66 @@
       }
     </div>
     <div
-      class="bg-[#4B515A] flex-none w-full md:w-72 py-6 px-10 justify-left rounded-2xl relative"
+      class="bg-[#4B515A] flex-none w-full md:w-72 py-4 px-6 justify-left rounded-2xl relative"
     >
       <h4
         class="font-[ClashDisplay-Medium] text-white text-xl sm:text-2xl mb-3"
       >
         Contact
       </h4>
-      <div class="w-full border-t border-white"></div>
+      <div class="flex item-center flex-col">
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
+        >
+          Localisation :
+        </p>
+        <p
+          class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider"
+        >
+          {{ artist?.user.city }}
+        </p>
+      </div>
+      <div class="w-full border-t border-white mt-2 mb-2"></div>
+      <div class="flex item-center flex-col">
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
+        >
+          Type :
+        </p>
+        <p
+          class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider capitalize"
+        >
+          {{ artist?.user.role }}
+        </p>
+      </div>
+      <div class="w-full border-t border-white mt-2 mb-2"></div>
+      <div class="flex item-center flex-col">
+        <p
+          class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
+        >
+          Email :
+        </p>
+        <p
+          class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider lowercase"
+        >
+          {{ artist?.user.email }}
+        </p>
+      </div>
+      @if (artist?.user.phone) {
+        <div class="w-full border-t border-white mt-2 mb-2"></div>
+        <div class="flex item-center flex-col">
+          <p
+            class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white tracking-wider mb-1"
+          >
+            Téléphone :
+          </p>
+          <p
+            class="font-[ClashDisplay-Medium] text-sm sm:text-base text-[#6D9985] overflow-ellipsis overflow-hidden whitespace-nowrap tracking-wider lowercase"
+          >
+            {{ artist?.user.phone }}
+          </p>
+        </div>
+      }
     </div>
   </div>
 
