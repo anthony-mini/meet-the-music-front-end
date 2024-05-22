@@ -7,3 +7,12 @@
 .banner-title {
   font-family: 'ClashDisplay-Semibold';
 }
+
+.social-media-button {
+  border: 1px solid var(--DesignLab-Grey-Stroke, #4b515a);
+  background: var(--DesignLab-Black, #0e1218);
+
+  &:hover {
+    background: var(--DesignLab-Black, #9981c2);
+  }
+}
