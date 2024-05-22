@@ -1,23 +1,25 @@
 <section class="flex flex-col items-center justify-center px-6 py-12 lg:px-12">
   <div
-    class="banner-profile-artist container flex flex-row justify-left items-center p-5 xl:p-14 gap-3 lg:gap-6 xl:gap-8 mx-auto lg:px-8 rounded-2xl xl:rounded-3xl"
+    class="banner-profile-artist container flex flex-row justify-left items-center p-4 sm:p-6 xl:p-14 gap-3 sm:gap-6 lg:gap-6 xl:gap-8 mx-auto lg:px-8 rounded-2xl sm:rounded-3xl xl:rounded-3xl"
   >
     <div>
       <span
-        class="inline-flex w-16 h-16 lg:w-28 lg:h-28 xl:h-40 xl:w-40 items-center justify-center rounded-full bg-[#7D838C]"
+        class="inline-flex w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 xl:h-40 xl:w-40 items-center justify-center rounded-full bg-[#7D838C]"
       >
         <span
-          class="text-2xl lg:text-5xl xl:text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
+          class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-[ClashDisplay-Medium] tracking-wider text-white"
           >{{ initials }}</span
         >
       </span>
     </div>
-    <div class="flex flex-col items-start gap-y-2">
+    <div class="flex flex-col items-start gap-y-1 sm:gap-y-1.5">
       <span
-        class="py-0 px-1 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs md:text-sm uppercase"
+        class="py-0 px-1 sm:px-2 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs sm:text-sm md:text-sm uppercase"
         >{{ artist?.user?.role }}</span
       >
-      <h2 class="banner-title text-xl xl:text-6xl text-white flex gap-3">
+      <h2
+        class="banner-title text-xl sm:text-2xl xl:text-6xl text-white flex gap-3"
+      >
         <span
           class="overflow-ellipsis overflow-hidden whitespace-nowrap max-w-[230px] sm:max-w-fit block capitalize"
         >
@@ -26,22 +28,26 @@
         </span>
       </h2>
 
-      <div class="flex gap-2 items-center">
-        @if (artist?.user?.city) {
-          <p
-            class="text-xs xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
-          >
-            {{ artist?.user?.city }}
-          </p>
-          <span
-            class="inline-flex h-1 w-1 items-center justify-center rounded-full bg-[#7D838C]"
-          ></span>
-        }
+      <p
+        class="text-sm sm:text-base xl:text-base font-[ClashDisplay-Medium] lowercase text-[#6D9985]"
+      >
+        &commat;{{ artist?.user?.alias }}
+      </p>
+
+      <div class="flex gap-1 items-center">
+        <p
+          class="text-xs sm:text-sm xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+        >
+          {{ artist?.user?.city }}
+        </p>
+        <span
+          class="inline-flex h-1 w-1 items-center justify-center rounded-full bg-[#7D838C]"
+        ></span>
 
         <p
-          class="text-xs xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C]"
+          class="text-xs sm:text-sm xl:text-base font-[ClashDisplay-Medium] capitalize text-[#7D838C] overflow-ellipsis"
         >
-          Rejoint {{ createdDate }}
+          {{ createdDate }}
         </p>
       </div>
     </div>
