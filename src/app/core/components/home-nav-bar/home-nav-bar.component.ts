@@ -15,6 +15,7 @@ import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
 export class HomeNavBarComponent implements OnInit {
   mobileMenuOpen = false;
   userData: any;
+  dropdownOpen = false;
 
   constructor(
     private authService: AuthService,
@@ -46,6 +47,10 @@ export class HomeNavBarComponent implements OnInit {
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
   isLogged() {

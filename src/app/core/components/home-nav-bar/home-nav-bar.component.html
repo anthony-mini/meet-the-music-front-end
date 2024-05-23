@@ -127,23 +127,68 @@
           Se connecter<span aria-hidden="true">&rarr;</span>
         </a>
       } @else if (userData.role === 'artist') {
-        <button
-          routerLink="/artist/{{ userData.alias }}"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
-        >
-          <span
-            class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
-            >{{ userData.initial }}</span
+        <div class="relative inline-block text-left">
+          <button (click)="toggleMobileMenu()" class="flex items-center gap-5">
+            <div
+              class="inline-flex h-11 w-11 items-center rounded-full bg-gray-500 justify-around"
+            >
+              <span
+                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+                >{{ userData.initial }}</span
+              >
+            </div>
+            <div
+              class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider capitalize flex items-center gap-1"
+            >
+              {{ userData.firstName }}{{ userData.lastName }}
+              <svg
+                class="-mr-1 h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </button>
+          <div
+            class="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu"
+            [class.hidden]="!mobileMenuOpen"
           >
-        </button>
+            <div class="py-1" role="none">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+                >Account settings</a
+              >
+              <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                >Support</a
+              >
 
-        <a
+              <a
+                routerLink="/login"
+                (click)="onLogout()"
+                class="text-sm font-semibold leading-6 text-white flex gap-2"
+              >
+                Se déconnecter<span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <a
           routerLink="/login"
           (click)="onLogout()"
           class="text-sm font-semibold leading-6 text-white flex gap-2"
         >
           Se déconnecter<span aria-hidden="true">&rarr;</span>
-        </a>
+        </a> -->
       } @else if (userData.role === 'promoter') {
         <button
           routerLink="/establishment/{{ userData.alias }}"
