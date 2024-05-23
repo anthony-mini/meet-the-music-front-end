@@ -1,0 +1,39 @@
+.banner-profile-artist {
+  border: 1px solid var(--DesignLab-Grey-Stroke, #4b515a);
+  background: var(--DesignLab-Black, #0e1218);
+  width: 100%;
+}
+
+.banner-title {
+  font-family: 'ClashDisplay-Semibold';
+}
+
+.social-media-button {
+  border: 1px solid var(--DesignLab-Grey-Stroke, #4b515a);
+  background: var(--DesignLab-Black, #0e1218);
+
+  &:hover {
+    background: var(--DesignLab-Black, #9981c2);
+  }
+}
+
+.banner-action-button {
+  font-family: 'ClashDisplay-Medium';
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--DesignLab-Black, #9981c2);
+  }
+}
+
+.description-container {
+  // border: 1px solid red;
+  width: 100%;
+  height: auto;
+}

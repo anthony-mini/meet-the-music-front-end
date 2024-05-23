@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -11,24 +11,27 @@ import { UserService } from 'src/app/core/services/user.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Role } from '../../core/enums/role.enum';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/core/services/error-handler.service';
 import { ErrorNotificationComponent } from 'src/app/core/components/custom-toastr/error-notification/error-notification.component';
 import { SuccessNotificationComponent } from 'src/app/core/components/custom-toastr/success-notification/success-notification.component';
 import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
 import { ToastrService } from 'ngx-toastr';
 import { NgClass } from '@angular/common';
+import { ZipcodeData, ZIP_CODE_DATA } from '../../core/interfaces/zipcode-data';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgClass],
+  imports: [FormsModule, ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   userForm: FormGroup;
   isSubmitted = false;
+  zipcodeData: ZipcodeData = ZIP_CODE_DATA;
+  zipcodes: string[] = Object.keys(this.zipcodeData);
 
   refex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
 
@@ -45,6 +48,14 @@ export class SignUpComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       role: [Role.ARTIST, Validators.required],
+      zipCode: ['', Validators.required],
+      city: [{ value: '', disabled: true }, Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.userForm.get('zipCode')?.valueChanges.subscribe((zipcode) => {
+      this.userForm.get('city')?.setValue(this.zipcodeData[zipcode]);
     });
   }
 
@@ -67,7 +78,12 @@ export class SignUpComponent {
       return;
     }
 
+    // Temporarily enable the city field to get its value
+    this.userForm.get('city')?.enable();
     const user: CreateUserDto = this.userForm.value;
+    // Disable the city field again
+    this.userForm.get('city')?.disable();
+
     this.userService
       .createUser(user)
       .pipe(

@@ -4,6 +4,8 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
 import { SignUpComponent } from './features/sign-up/sign-up.component';
 import { HomeComponent } from './features/home/home.component';
 import { authGuard, isLoggedInGuard } from './core/services/auth.guard';
+import { ArtistProfileComponent } from './features/artist-profile/artist-profile.component';
+import { EstablishmentProfileComponent } from './features/establishment-profile/establishment-profile.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +21,14 @@ export const routes: Routes = [
     path: 'sign-up',
     component: SignUpComponent,
     canActivate: [isLoggedInGuard],
+  },
+  {
+    path: 'artist/:alias',
+    component: ArtistProfileComponent,
+  },
+  {
+    path: 'establishment/:alias',
+    component: EstablishmentProfileComponent,
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, canActivate: [authGuard] },
