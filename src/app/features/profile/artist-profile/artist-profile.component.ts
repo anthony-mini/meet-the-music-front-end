@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArtistProfileService } from '../../core/services/artist-profile.service';
+import { ArtistProfileService } from '../../../core/services/artist-profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor } from '@angular/common';
 

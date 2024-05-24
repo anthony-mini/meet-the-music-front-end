@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EstablishmentProfileService } from '../../core/services/establishment-profile.service';
+import { EstablishmentProfileService } from '../../../core/services/establishment-profile.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-establishment-profile',

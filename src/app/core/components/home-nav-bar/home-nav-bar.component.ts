@@ -28,6 +28,8 @@ export class HomeNavBarComponent implements OnInit {
 
     this.authService.getUserData().subscribe((data) => {
       this.userData = data;
+      this.mobileMenuOpen = false;
+      this.dropdownOpen = false;
     });
   }
 
