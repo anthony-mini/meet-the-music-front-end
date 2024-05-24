@@ -36,13 +36,19 @@
       </button>
     </div>
     <div class="hidden lg:flex items-center lg:gap-x-7">
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+      <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Découvrir</a
       >
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+      <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Communauté</a
       >
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+      <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Services</a
       >
 
@@ -240,7 +246,8 @@
                 Mon Compte
               </p>
               <a
-                href="#"
+                [routerLink]="['/work-in-progress']"
+                routerLinkActive="router-link-active"
                 (click)="toggleDropdown()"
                 class="text-[#9981C2] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize flex items-center gap-2"
               >
@@ -277,7 +284,7 @@
               </p>
 
               <a
-                href="#"
+                [routerLink]="['/work-in-progress']"
                 (click)="toggleDropdown()"
                 class="text-[#0E1218] flex items-center gap-1.5 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize"
               >
@@ -445,7 +452,7 @@
                   Mon Compte
                 </p>
                 <a
-                  href="#"
+                  [routerLink]="['/work-in-progress']"
                   (click)="toggleDropdown()"
                   class="text-[#9981C2] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize flex items-center gap-2"
                 >
@@ -482,7 +489,7 @@
                 </p>
 
                 <a
-                  href="#"
+                  [routerLink]="['/work-in-progress']"
                   (click)="toggleDropdown()"
                   class="text-[#0E1218] flex items-center gap-1.5 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize"
                 >
@@ -521,7 +528,7 @@
             </div>
           </div>
         } @else {
-          <a href="#" class="-m-1.5 p-1.5">
+          <a [routerLink]="['/work-in-progress']" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
             <img
               class="h-10 w-auto"
@@ -556,17 +563,17 @@
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Découvrir</a
             >
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Services</a
             >
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Communauté</a
             >

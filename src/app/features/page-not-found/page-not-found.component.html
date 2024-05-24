@@ -1,2 +1,25 @@
-<a routerLink="/">Retour à la page d'accueil</a>
-<a routerLink="/login">Se connecter</a>
+<main class="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
+  <div class="text-center">
+    <p class="text-8xl sm:text-9xl font-[ClashGrotesk-SemiBold] text-[#9981C2]">
+      404
+    </p>
+    <h1
+      class="mt-4 text-2xl font-[ClashDisplay-Medium] tracking-tight text-[#FFFFFF] sm:text-5xl"
+    >
+      On dirait que tu es perdu
+    </h1>
+    <p
+      class="mt-6 text-lg font-[ClashGrotesk-Regular] leading-7 text-[#7D838C]"
+    >
+      Nous n’arrivons pas à trouver la page que vous recherchez.
+    </p>
+    <div class="mt-10 flex items-center justify-center gap-x-6">
+      <a
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+        class="rounded-2xl bg-[#6D9985] p-4 text-base sm:text-lg font-[ClashDisplay-Medium] text-white shadow-sm hover:bg-[#9981C2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9981C2] transition-colors duration-200 ease-in-out"
+        >Retour à la page d'accueil</a
+      >
+    </div>
+  </div>
+</main>
