@@ -31,5 +31,5 @@ export const routes: Routes = [
     component: EstablishmentProfileComponent,
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent, canActivate: [authGuard] },
+  { path: '**', component: PageNotFoundComponent },
 ];
