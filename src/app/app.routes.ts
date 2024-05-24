@@ -4,8 +4,8 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
 import { SignUpComponent } from './features/sign-up/sign-up.component';
 import { HomeComponent } from './features/home/home.component';
 import { authGuard, isLoggedInGuard } from './core/services/auth.guard';
-import { ArtistProfileComponent } from './features/artist-profile/artist-profile.component';
-import { EstablishmentProfileComponent } from './features/establishment-profile/establishment-profile.component';
+import { ArtistProfileComponent } from '../app/features/profile/artist-profile/artist-profile.component';
+import { EstablishmentProfileComponent } from '../app/features/profile/establishment-profile/establishment-profile.component';
 
 export const routes: Routes = [
   {
