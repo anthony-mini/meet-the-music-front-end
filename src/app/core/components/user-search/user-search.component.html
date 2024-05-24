@@ -1,0 +1,18 @@
+<div>
+  <h2>Recherche des Utilisateurs</h2>
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    placeholder="Rechercher..."
+    (input)="searchUsers()"
+  />
+  <ul class="text-white">
+    <li *ngFor="let user of users">
+      <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+      <p>Email: {{ user.email }}</p>
+      <p>Role: {{ user.role }}</p>
+      <p>Status: {{ user.status }}</p>
+      <p>City: {{ user.city }}</p>
+    </li>
+  </ul>
+</div>

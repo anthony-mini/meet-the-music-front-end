@@ -6,6 +6,7 @@ import { ServiceItemComponent } from 'src/app/core/components/service-item/servi
 import { CtaConnexionComponent } from 'src/app/core/components/cta-connexion/cta-connexion.component';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SearchItemComponent } from 'src/app/core/components/search-item/search-item.component';
+import { UserSearchComponent } from 'src/app/core/components/user-search/user-search.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { SearchItemComponent } from 'src/app/core/components/search-item/search-
     ServiceItemComponent,
     CtaConnexionComponent,
     SearchItemComponent,
+    UserSearchComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
