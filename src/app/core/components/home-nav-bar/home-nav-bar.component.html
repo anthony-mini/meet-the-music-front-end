@@ -48,7 +48,7 @@
               id="search"
               #searchInput
               name="search"
-              class="block w-full rounded-md border-0 bg-gray-700 py-1.5 px-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 focus:ring-[#9981C2] focus:ring-2 sm:text-sm sm:leading-6 transition-all duration-300 ease-in-out transform"
+              class="block w-full rounded-md border-0 bg-gray-700 py-1.5 px-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] focus:ring-[#9981C2] focus:ring-1 sm:text-sm sm:leading-6 transition-all duration-300 ease-in-out transform capitalize"
               placeholder="Recherche..."
               autocomplete="off"
               [(ngModel)]="searchQuery"
@@ -108,7 +108,7 @@
         </svg>
       </button>
     </div>
-    <div class="hidden lg:flex items-center lg:gap-x-7">
+    <div class="hidden lg:flex items-center lg:gap-x-4">
       <!-- <a
         [routerLink]="['/work-in-progress']"
         class="text-sm font-semibold leading-6 text-white"
@@ -193,8 +193,9 @@
               <input
                 id="search"
                 name="search"
-                class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-                placeholder="Search"
+                class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] placeholder:text-sm focus:ring-[#9981C2] sm:text-sm sm:leading-6 focus:ring-1 capitalize"
+                autocomplete="off"
+                placeholder="Recherche..."
                 [(ngModel)]="searchQuery"
                 (input)="searchUsers()"
                 (focus)="isSearchBarOpen = true"
@@ -202,7 +203,7 @@
               />
             </div>
             <div
-              class="absolute z-10 mt-3 w-52 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              class="absolute z-10 mt-3 w-[200px] origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               role="menu"
               [class.hidden]="!isSearchBarOpen"
             >
@@ -240,7 +241,7 @@
         </a>
       } @else {
         <div class="relative inline-block text-left">
-          <button (click)="toggleDropdown()" class="flex items-center gap-5">
+          <button (click)="toggleDropdown()" class="flex items-center gap-4">
             <div
               class="inline-flex h-11 w-11 items-center rounded-full bg-gray-500 justify-around"
             >
