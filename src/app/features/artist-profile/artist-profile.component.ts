@@ -41,10 +41,6 @@ export class ArtistProfileComponent implements OnInit {
           month: 'long',
           year: 'numeric',
         });
-
-        console.log(this.artist);
-        console.log(this.initials);
-        console.log(this.createdDate);
       });
   }
 }
