@@ -18,9 +18,11 @@ export class EstablishmentProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Get the alias from the URL and load the establishment profile
-    this.alias = this.route.snapshot.paramMap.get('alias')!;
-    this.loadArtistProfile();
+    // Subscribe to the route parameters and load the artist profile whenever they change
+    this.route.params.subscribe((params) => {
+      this.alias = params['alias'];
+      this.loadArtistProfile();
+    });
   }
 
   loadArtistProfile(): void {

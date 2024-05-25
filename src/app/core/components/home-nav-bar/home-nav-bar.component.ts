@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { InformationNotificationComponent } from '../custom-toastr/information-notification/information-notification.component';
 import { IndividualConfig } from 'ngx-toastr/toastr/toastr-config';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home-nav-bar',
   standalone: true,
-  imports: [RouterLink, FormsModule, NgFor, NgIf],
+  imports: [RouterLink, FormsModule, NgFor, NgIf, NgClass],
   templateUrl: './home-nav-bar.component.html',
   styleUrl: './home-nav-bar.component.scss',
 })
 export class HomeNavBarComponent implements OnInit {
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
   mobileMenuOpen = false;
   userData: any;
   dropdownOpen = false;
@@ -94,9 +96,20 @@ export class HomeNavBarComponent implements OnInit {
     }
   }
 
+  toggleSearchBar(): void {
+    this.isSearchBarOpen = !this.isSearchBarOpen;
+    if (this.isSearchBarOpen) {
+      setTimeout(() => {
+        this.searchInput.nativeElement.focus();
+      }, 0);
+    }
+  }
+
   onFocusOut() {
     setTimeout(() => {
       this.isSearchBarOpen = false;
+      // Reset search query
+      this.searchQuery = '';
     }, 100);
   }
 }

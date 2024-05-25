@@ -12,40 +12,54 @@
       />
     </a>
 
-    <div class="flex lg:hidden justify-end">
+    <div class="flex lg:hidden justify-between">
       @if (isLogged()) {
-        <div class="w-2/3 max-w-sm mr-3">
+        <div class="w-4/5 max-w-lg lg:max-w-xs">
           <label for="search" class="sr-only">Search</label>
           <div class="relative inline-block text-left">
             <div
-              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              class="absolute cursor-pointer inset-y-1 right-6 top-[-2px] flex items-center pl-3 lg:hidden"
+              (click)="toggleSearchBar()"
             >
               <svg
-                class="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
               >
                 <path
-                  fill-rule="evenodd"
-                  d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                  clip-rule="evenodd"
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21 21L16.65 16.65"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
               </svg>
             </div>
             <input
               id="search"
+              #searchInput
               name="search"
-              class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-              placeholder="Search"
+              class="block w-full rounded-md border-0 bg-gray-700 py-1.5 px-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] focus:ring-[#9981C2] focus:ring-1 sm:text-sm sm:leading-6 transition-all duration-300 ease-in-out transform capitalize"
+              placeholder="Recherche..."
+              autocomplete="off"
               [(ngModel)]="searchQuery"
               (input)="searchUsers()"
               (focus)="isSearchBarOpen = true"
               (focusout)="onFocusOut()"
+              [ngClass]="{ hidden: !isSearchBarOpen, block: isSearchBarOpen }"
             />
           </div>
           <div
-            class="absolute z-10 mt-3 w-52 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            class="absolute z-10 mt-3 w-[182px] origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
             [class.hidden]="!isSearchBarOpen"
           >
@@ -94,7 +108,7 @@
         </svg>
       </button>
     </div>
-    <div class="hidden lg:flex items-center lg:gap-x-7">
+    <div class="hidden lg:flex items-center lg:gap-x-4">
       <!-- <a
         [routerLink]="['/work-in-progress']"
         class="text-sm font-semibold leading-6 text-white"
@@ -179,8 +193,9 @@
               <input
                 id="search"
                 name="search"
-                class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-gray-300 placeholder:text-gray-400 focus:bg-white focus:text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-                placeholder="Search"
+                class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] placeholder:text-sm focus:ring-[#9981C2] sm:text-sm sm:leading-6 focus:ring-1 capitalize"
+                autocomplete="off"
+                placeholder="Recherche..."
                 [(ngModel)]="searchQuery"
                 (input)="searchUsers()"
                 (focus)="isSearchBarOpen = true"
@@ -188,7 +203,7 @@
               />
             </div>
             <div
-              class="absolute z-10 mt-3 w-52 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              class="absolute z-10 mt-3 w-[200px] origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               role="menu"
               [class.hidden]="!isSearchBarOpen"
             >
@@ -226,7 +241,7 @@
         </a>
       } @else {
         <div class="relative inline-block text-left">
-          <button (click)="toggleDropdown()" class="flex items-center gap-5">
+          <button (click)="toggleDropdown()" class="flex items-center gap-4">
             <div
               class="inline-flex h-11 w-11 items-center rounded-full bg-gray-500 justify-around"
             >
