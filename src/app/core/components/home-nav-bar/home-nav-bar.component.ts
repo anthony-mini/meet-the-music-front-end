@@ -40,8 +40,6 @@ export class HomeNavBarComponent implements OnInit {
       this.mobileMenuOpen = false;
       this.dropdownOpen = false;
     });
-
-    this.getUsers();
   }
 
   showInformationMessage(message: string) {
@@ -86,14 +84,9 @@ export class HomeNavBarComponent implements OnInit {
   }
 
   searchUsers(): void {
-    if (this.searchQuery.trim() === '') {
-      this.getUsers();
-      return;
-    } else {
-      this.userService.searchUsers(this.searchQuery).subscribe((users) => {
-        this.users = users;
-      });
-    }
+    this.userService.searchUsers(this.searchQuery).subscribe((users) => {
+      this.users = users;
+    });
   }
 
   toggleSearchBar(): void {
@@ -110,6 +103,7 @@ export class HomeNavBarComponent implements OnInit {
       this.isSearchBarOpen = false;
       // Reset search query
       this.searchQuery = '';
+      this.users = [];
     }, 100);
   }
 }
