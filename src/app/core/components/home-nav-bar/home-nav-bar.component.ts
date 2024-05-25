@@ -108,6 +108,8 @@ export class HomeNavBarComponent implements OnInit {
   onFocusOut() {
     setTimeout(() => {
       this.isSearchBarOpen = false;
+      // Reset search query
+      this.searchQuery = '';
     }, 100);
   }
 }
