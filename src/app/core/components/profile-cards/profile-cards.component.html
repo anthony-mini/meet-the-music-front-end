@@ -1,0 +1,109 @@
+<div
+  class="mx-auto flex flex-col md:flex-row max-w-7xl items-center justify-between p-6 lg:px-8"
+>
+  <div *ngFor="let user of users" class="py-2 px-3 rounded-lg flex flex-row">
+    <div
+      class="w-[380px] h-[473px] p-10 bg-gray-800 rounded-[25px] flex-col justify-start items-start gap-8 inline-flex"
+    >
+      <div
+        class="self-stretch h-[161px] flex-col justify-start items-start gap-9 flex"
+      >
+        <div
+          class="self-stretch h-[161px] flex-col justify-start items-start gap-6 flex"
+        >
+          <div
+            class="self-stretch h-[161px] flex-col justify-start items-start gap-4 flex"
+          >
+            <div class="self-stretch justify-between items-start inline-flex">
+              <div
+                class="px-2.5 py-1 bg-amber-300 rounded justify-start items-center gap-1 flex"
+              >
+                <div
+                  class="text-center text-neutral-900 text-xs font-medium font-['Clash Display Variable'] uppercase leading-none"
+                >
+                  {{ user.role }}
+                </div>
+              </div>
+              <div class="w-6 h-6 relative"></div>
+            </div>
+            <div
+              class="self-stretch h-14 flex-col justify-start items-start gap-2 flex"
+            >
+              <div
+                class="self-stretch text-white text-4xl font-semibold font-['Clash Display Variable'] leading-9 capitalize"
+              >
+                {{ user.firstName }} {{ user.lastName }}
+              </div>
+            </div>
+            <div class="flex-col justify-start items-start gap-6 flex">
+              <div
+                class="w-[300px] text-slate-500 text-2xl font-semibold font-['Clash Display Variable'] leading-normal"
+              >
+                &commat;{{ user.alias }}
+              </div>
+              <div
+                class="w-[300px] text-gray-500 text-sm font-medium font-['Clash Grotesk'] leading-tight"
+              >
+                {{ user.city }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="self-stretch justify-start items-center gap-8 inline-flex">
+        <div class="w-[120px] h-[120px] relative">
+          <div
+            class="w-[120px] h-[120px] left-0 top-0 absolute bg-gray-500 rounded-[100px]"
+          ></div>
+          <div class="w-2.5 h-2.5 left-[98px] top-[13px] absolute">
+            <div
+              class="w-2.5 h-2.5 left-0 top-0 absolute bg-red-500 rounded-full border-4 border-gray-800"
+            ></div>
+          </div>
+        </div>
+        <div class="flex-col justify-start items-start gap-6 inline-flex">
+          <div class="flex-col justify-center items-start gap-2 flex">
+            <div
+              class="text-white text-2xl font-semibold font-['Clash Display Variable'] leading-normal"
+            >
+              $30
+            </div>
+            <div
+              class="text-gray-500 text-sm font-medium font-['Clash Grotesk'] leading-tight"
+            >
+              per hour
+            </div>
+          </div>
+          <div
+            class="self-stretch h-[33px] flex-col justify-center items-start gap-2 flex"
+          >
+            <div class="justify-start items-end gap-1 inline-flex">
+              <div>
+                <span class="text-white">4.7</span
+                ><span
+                  class="text-gray-500 text-2xl font-medium font-['Clash Display Variable']"
+                >
+                </span>
+              </div>
+              <div class="w-3 h-3 relative"></div>
+            </div>
+            <div
+              class="text-gray-500 text-sm font-medium font-['Clash Grotesk'] leading-tight"
+            >
+              26 reviews
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="self-stretch h-12 px-6 py-[19px] rounded-[10px] border border-zinc-600 justify-center items-center gap-2.5 inline-flex"
+      >
+        <div
+          class="text-center text-white text-sm font-semibold font-['Clash Display Variable'] leading-tight"
+        >
+          Invite
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

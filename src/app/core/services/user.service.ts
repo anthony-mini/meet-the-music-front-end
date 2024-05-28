@@ -26,4 +26,10 @@ export class UserService {
   searchUsers(param: string): Observable<UserDto[]> {
     return this.http.get<UserDto[]>(`${this.baseUrl}/users/search/${param}`);
   }
+
+  getArtistUsers(query: number): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(
+      `${this.baseUrl}/users/artists?limit=${query}`,
+    );
+  }
 }
