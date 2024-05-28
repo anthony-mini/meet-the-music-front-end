@@ -1,8 +1,16 @@
 <section
   class="mx-auto flex flex-col max-w-7xl items-center justify-between p-6 lg:px-8"
 >
-  <app-banner></app-banner>
-  <app-cta-connexion></app-cta-connexion>
-  <app-stat-item></app-stat-item>
-  <app-service-item></app-service-item>
+  @if (!userData) {
+    <app-banner></app-banner>
+    <app-cta-connexion></app-cta-connexion>
+    <app-stat-item></app-stat-item>
+    <app-service-item></app-service-item>
+  } @else {
+    <app-banner></app-banner>
+    <!-- <app-user-search></app-user-search> -->
+    <app-cta-connexion></app-cta-connexion>
+    <app-stat-item></app-stat-item>
+    <app-service-item></app-service-item>
+  }
 </section>

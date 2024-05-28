@@ -12,7 +12,80 @@
       />
     </a>
 
-    <div class="flex lg:hidden gap-2">
+    <div class="flex lg:hidden justify-between">
+      @if (isLogged()) {
+        <div class="w-4/5 max-w-lg lg:max-w-xs">
+          <label for="search" class="sr-only">Search</label>
+          <div class="relative inline-block text-left">
+            <div
+              class="absolute cursor-pointer inset-y-1 right-6 top-[-2px] flex items-center pl-3 lg:hidden"
+              (click)="toggleSearchBar()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21 21L16.65 16.65"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <input
+              id="search"
+              #searchInput
+              name="search"
+              class="block w-full rounded-md border-0 bg-gray-700 py-1.5 px-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] focus:ring-[#9981C2] focus:ring-1 sm:text-sm sm:leading-6 transition-all duration-300 ease-in-out transform capitalize"
+              placeholder="Recherche..."
+              autocomplete="off"
+              [(ngModel)]="searchQuery"
+              (input)="searchUsers()"
+              (focus)="isSearchBarOpen = true"
+              (focusout)="onFocusOut()"
+              [ngClass]="{ hidden: !isSearchBarOpen, block: isSearchBarOpen }"
+            />
+          </div>
+          <div
+            class="absolute z-10 mt-3 w-[182px] origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu"
+            [class.hidden]="!isSearchBarOpen"
+          >
+            <div
+              *ngFor="let user of users"
+              class="py-2 px-3 rounded-lg hover:bg-gray-100"
+            >
+              <a
+                *ngIf="user.role === 'artist'"
+                routerLink="/artist/{{ user.alias }}"
+                activatedRoute="router-link-active"
+                class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                >{{ user.firstName }} {{ user.lastName }}</a
+              >
+
+              <a
+                *ngIf="user.role === 'promoter'"
+                routerLink="/establishment/{{ user.alias }}"
+                activatedRoute="router-link-active"
+                class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                >{{ user.firstName }} {{ user.lastName }}</a
+              >
+            </div>
+          </div>
+        </div>
+      }
       <button
         type="button"
         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -35,45 +108,24 @@
         </svg>
       </button>
     </div>
-    <div class="hidden lg:flex items-center lg:gap-x-7">
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+    <div class="hidden lg:flex items-center lg:gap-x-4">
+      <!-- <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Découvrir</a
       >
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+      <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Communauté</a
       >
-      <a href="#" class="text-sm font-semibold leading-6 text-white"
+      <a
+        [routerLink]="['/work-in-progress']"
+        class="text-sm font-semibold leading-6 text-white"
         >Services</a
-      >
+      > -->
 
       <div class="button-container flex items-center lg:gap-x-4">
-        <button>
-          <span class="sr-only">Search</span>
-
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 24C19.4183 24 23 20.4183 23 16C23 11.5817 19.4183 8 15 8C10.5817 8 7 11.5817 7 16C7 20.4183 10.5817 24 15 24Z"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M25 25.9999L20.65 21.6499"
-              stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-
         <button>
           <span class="sr-only">Message</span>
           <svg
@@ -117,6 +169,67 @@
             />
           </svg>
         </button>
+
+        @if (isLogged()) {
+          <div class="w-full max-w-lg lg:max-w-xs">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative inline-block text-left">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+              >
+                <svg
+                  class="h-5 w-5 text-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <input
+                id="search"
+                name="search"
+                class="block w-full rounded-md border-0 bg-gray-700 py-1.5 pl-10 pr-3 text-[#ffffff] font-[ClashGrotesk-Regular] placeholder:text-gray-500 placeholder:font-[ClashGrotesk-Regular] placeholder:text-sm focus:ring-[#9981C2] sm:text-sm sm:leading-6 focus:ring-1 capitalize"
+                autocomplete="off"
+                placeholder="Recherche..."
+                [(ngModel)]="searchQuery"
+                (input)="searchUsers()"
+                (focus)="isSearchBarOpen = true"
+                (focusout)="onFocusOut()"
+              />
+            </div>
+            <div
+              class="absolute z-10 mt-3 w-[200px] origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              [class.hidden]="!isSearchBarOpen"
+            >
+              <div
+                *ngFor="let user of users"
+                class="py-2 px-3 rounded-lg hover:bg-gray-100"
+              >
+                <a
+                  *ngIf="user.role === 'artist'"
+                  routerLink="/artist/{{ user.alias }}"
+                  activatedRoute="router-link-active"
+                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                  >{{ user.firstName }} {{ user.lastName }}</a
+                >
+
+                <a
+                  *ngIf="user.role === 'promoter'"
+                  routerLink="/establishment/{{ user.alias }}"
+                  activatedRoute="router-link-active"
+                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                  >{{ user.firstName }} {{ user.lastName }}</a
+                >
+              </div>
+            </div>
+          </div>
+        }
       </div>
 
       @if (!isLogged()) {
@@ -124,44 +237,198 @@
           routerLink="/login"
           class="text-sm font-semibold leading-6 text-white flex gap-2"
         >
-          Se connecter<span aria-hidden="true">&rarr;</span>
+          Connexion<span aria-hidden="true">&rarr;</span>
         </a>
-      } @else if (userData.role === 'artist') {
-        <button
-          routerLink="/artist/{{ userData.alias }}"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
-        >
-          <span
-            class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
-            >{{ userData.initial }}</span
+      } @else {
+        <div class="relative inline-block text-left">
+          <button (click)="toggleDropdown()" class="flex items-center gap-4">
+            <div
+              class="inline-flex h-11 w-11 items-center rounded-full bg-gray-500 justify-around"
+            >
+              <span
+                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+                >{{ userData.initial }}</span
+              >
+            </div>
+            <div
+              class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider capitalize flex items-center gap-1"
+            >
+              {{ userData.firstName }} {{ userData.lastName }}
+              <svg
+                class="-mr-1 h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </button>
+          <div
+            class="absolute z-10 mt-3 w-52 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu"
+            [class.hidden]="!dropdownOpen"
           >
-        </button>
+            <!-- DropDown -->
+            <div class="py-1">
+              @if (userData.role === 'artist') {
+                <a
+                  routerLink="/artist/{{ userData.alias }}"
+                  (click)="toggleDropdown()"
+                  class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="#0E1218"
+                    >
+                      <path
+                        d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="#0E1218"
+                      />
+                      <path
+                        d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="#0E1218"
+                      />
+                    </svg>
+                  </span>
+                  Voir le profil
+                </a>
+              } @else if (userData.role === 'promoter') {
+                <a
+                  routerLink="/establishment/{{ userData.alias }}"
+                  (click)="toggleDropdown()"
+                  class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="#0E1218"
+                    >
+                      <path
+                        d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="#0E1218"
+                      />
+                      <path
+                        d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                        stroke="white"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="#0E1218"
+                      />
+                    </svg>
+                  </span>
+                  Voir le profil
+                </a>
+              }
 
-        <a
-          routerLink="/login"
-          (click)="onLogout()"
-          class="text-sm font-semibold leading-6 text-white flex gap-2"
-        >
-          Se déconnecter<span aria-hidden="true">&rarr;</span>
-        </a>
-      } @else if (userData.role === 'promoter') {
-        <button
-          routerLink="/establishment/{{ userData.alias }}"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
-        >
-          <span
-            class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
-            >{{ userData.initial }}</span
-          >
-        </button>
+              <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
 
-        <a
-          routerLink="/login"
-          (click)="onLogout()"
-          class="text-sm font-semibold leading-6 text-white flex gap-2"
-        >
-          Se déconnecter<span aria-hidden="true">&rarr;</span>
-        </a>
+              <p
+                class="text-[#0E1218] block font-[ClashDisplay-SemiBold] px-4 py-2 text-base tracking-wide mt-1"
+              >
+                Mon Compte
+              </p>
+              <a
+                [routerLink]="['/work-in-progress']"
+                routerLinkActive="router-link-active"
+                (click)="toggleDropdown()"
+                class="text-[#9981C2] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize flex items-center gap-2"
+              >
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_15_257)">
+                      <path
+                        d="M11.9687 4.60311C11.8902 4.36012 11.6746 4.18754 11.4197 4.16456L7.95614 3.85007L6.58656 0.64445C6.48558 0.409519 6.25559 0.257446 6.00006 0.257446C5.74453 0.257446 5.51454 0.409519 5.41356 0.644999L4.04399 3.85007L0.579908 4.16456C0.325385 4.18809 0.110414 4.36012 0.0314019 4.60311C-0.0476102 4.8461 0.0253592 5.11261 0.2179 5.28062L2.83592 7.57663L2.06392 10.9773C2.00744 11.2273 2.10448 11.4858 2.31195 11.6357C2.42346 11.7163 2.55393 11.7573 2.68549 11.7573C2.79893 11.7573 2.91145 11.7267 3.01244 11.6663L6.00006 9.88071L8.98659 11.6663C9.20513 11.7978 9.48062 11.7858 9.68762 11.6357C9.89518 11.4853 9.99214 11.2268 9.93565 10.9773L9.16366 7.57663L11.7817 5.28107C11.9742 5.11261 12.0477 4.84655 11.9687 4.60311Z"
+                        fill="#9981C2"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_15_257">
+                        <rect width="12" height="12" fill="#9981C2" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </span>
+                Essai premium</a
+              >
+
+              <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
+
+              <p
+                class="text-[#0E1218] block font-[ClashDisplay-SemiBold] tracking-wide px-4 py-2 text-base mt-1"
+              >
+                Gérer
+              </p>
+
+              <a
+                [routerLink]="['/work-in-progress']"
+                (click)="toggleDropdown()"
+                class="text-[#0E1218] flex items-center gap-1.5 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize"
+              >
+                <span>
+                  <svg
+                    viewBox="0 0 20 20"
+                    width="15"
+                    height="15"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    fill="#0E1218"
+                  >
+                    <path
+                      d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z"
+                      fill="#0E1218"
+                    />
+                    <path
+                      d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z"
+                      fill="#0E1218"
+                    />
+                  </svg>
+                </span>
+                Profil</a
+              >
+              <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
+
+              <a
+                routerLink="/login"
+                (click)="onLogout()"
+                (click)="toggleDropdown()"
+                class="text-[#0E1218] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline items-center flex gap-2"
+              >
+                Déconnexion
+              </a>
+            </div>
+          </div>
+        </div>
       }
     </div>
   </nav>
@@ -178,44 +445,197 @@
       class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#0E1216] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
     >
       <div class="flex items-center justify-between">
-        @if (isLogged() && userData.role === 'artist') {
-          <button
-            (click)="toggleMobileMenu()"
-            routerLink="/artist/{{ userData.alias }}"
-            class="-m-1.5 p-1.5 flex items-center gap-2"
-          >
-            <span
-              class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
-            >
-              <span
-                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
-                >{{ userData.initial }}</span
+        @if (isLogged()) {
+          <div class="relative inline-block text-left">
+            <button (click)="toggleDropdown()" class="flex items-center gap-5">
+              <div
+                class="inline-flex h-11 w-11 items-center rounded-full bg-gray-500 justify-around"
               >
-            </span>
-            <p class="text-white font-[ClashDisplay-Medium] capitalize">
-              {{ userData.firstName }} {{ userData.lastName }}
-            </p>
-          </button>
-        } @else if (isLogged() && userData.role === 'promoter') {
-          <button
-            (click)="toggleMobileMenu()"
-            routerLink="/establishment/{{ userData.alias }}"
-            class="-m-1.5 p-1.5 flex items-center gap-2"
-          >
-            <span
-              class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-gray-500"
-            >
-              <span
-                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
-                >{{ userData.initial }}</span
+                <span
+                  class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider"
+                  >{{ userData.initial }}</span
+                >
+              </div>
+              <div
+                class="text-md font-medium leading-none text-white font-[ClashDisplay-Medium] tracking-wider capitalize flex items-center gap-1"
               >
-            </span>
-            <p class="text-white font-[ClashDisplay-Medium]">
-              {{ userData.firstName }} {{ userData.lastName }}
-            </p>
-          </button>
+                {{ userData.firstName }} {{ userData.lastName }}
+                <svg
+                  class="-mr-1 h-5 w-5 text-gray-400"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </button>
+            <div
+              class="absolute z-10 mt-3 w-52 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              [class.hidden]="!dropdownOpen"
+            >
+              <!-- DropDown -->
+              <div class="py-1">
+                @if (userData.role === 'artist') {
+                  <a
+                    routerLink="/artist/{{ userData.alias }}"
+                    (click)="toggleDropdown()"
+                    class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                  >
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="#0E1218"
+                      >
+                        <path
+                          d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"
+                          stroke="white"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="#0E1218"
+                        />
+                        <path
+                          d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                          stroke="white"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="#0E1218"
+                        />
+                      </svg>
+                    </span>
+                    Voir le profil
+                  </a>
+                } @else if (userData.role === 'promoter') {
+                  <a
+                    routerLink="/establishment/{{ userData.alias }}"
+                    (click)="toggleDropdown()"
+                    class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                  >
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="#0E1218"
+                      >
+                        <path
+                          d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"
+                          stroke="white"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="#0E1218"
+                        />
+                        <path
+                          d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                          stroke="white"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          fill="#0E1218"
+                        />
+                      </svg>
+                    </span>
+                    Voir le profil
+                  </a>
+                }
+
+                <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
+
+                <p
+                  class="text-[#0E1218] block font-[ClashDisplay-SemiBold] px-4 py-2 text-base tracking-wide mt-1"
+                >
+                  Mon Compte
+                </p>
+                <a
+                  [routerLink]="['/work-in-progress']"
+                  (click)="toggleDropdown()"
+                  class="text-[#9981C2] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize flex items-center gap-2"
+                >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                    >
+                      <g clip-path="url(#clip0_15_257)">
+                        <path
+                          d="M11.9687 4.60311C11.8902 4.36012 11.6746 4.18754 11.4197 4.16456L7.95614 3.85007L6.58656 0.64445C6.48558 0.409519 6.25559 0.257446 6.00006 0.257446C5.74453 0.257446 5.51454 0.409519 5.41356 0.644999L4.04399 3.85007L0.579908 4.16456C0.325385 4.18809 0.110414 4.36012 0.0314019 4.60311C-0.0476102 4.8461 0.0253592 5.11261 0.2179 5.28062L2.83592 7.57663L2.06392 10.9773C2.00744 11.2273 2.10448 11.4858 2.31195 11.6357C2.42346 11.7163 2.55393 11.7573 2.68549 11.7573C2.79893 11.7573 2.91145 11.7267 3.01244 11.6663L6.00006 9.88071L8.98659 11.6663C9.20513 11.7978 9.48062 11.7858 9.68762 11.6357C9.89518 11.4853 9.99214 11.2268 9.93565 10.9773L9.16366 7.57663L11.7817 5.28107C11.9742 5.11261 12.0477 4.84655 11.9687 4.60311Z"
+                          fill="#9981C2"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_15_257">
+                          <rect width="12" height="12" fill="#9981C2" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  Essai premium</a
+                >
+
+                <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
+
+                <p
+                  class="text-[#0E1218] block font-[ClashDisplay-SemiBold] tracking-wide px-4 py-2 text-base mt-1"
+                >
+                  Gérer
+                </p>
+
+                <a
+                  [routerLink]="['/work-in-progress']"
+                  (click)="toggleDropdown()"
+                  class="text-[#0E1218] flex items-center gap-1.5 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:bg-gray-100 capitalize"
+                >
+                  <span>
+                    <svg
+                      viewBox="0 0 20 20"
+                      width="15"
+                      height="15"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      fill="#0E1218"
+                    >
+                      <path
+                        d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z"
+                        fill="#0E1218"
+                      />
+                      <path
+                        d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z"
+                        fill="#0E1218"
+                      />
+                    </svg>
+                  </span>
+                  Profil</a
+                >
+                <div class="border-t border-gray-200 w-[95%] mx-auto"></div>
+
+                <a
+                  routerLink="/login"
+                  (click)="onLogout()"
+                  (click)="toggleDropdown()"
+                  class="text-[#0E1218] font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline items-center flex gap-2"
+                >
+                  Déconnexion
+                </a>
+              </div>
+            </div>
+          </div>
         } @else {
-          <a href="#" class="-m-1.5 p-1.5">
+          <a [routerLink]="['/work-in-progress']" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
             <img
               class="h-10 w-auto"
@@ -250,36 +670,40 @@
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Découvrir</a
             >
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Services</a
             >
             <a
-              href="#"
+              [routerLink]="['/work-in-progress']"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >Communauté</a
             >
           </div>
-          <div class="py-6" (click)="toggleMobileMenu()">
+          <div
+            class="py-6"
+            (click)="toggleMobileMenu()"
+            (click)="toggleDropdown()"
+          >
             @if (!isLogged()) {
               <a
                 routerLink="/login"
                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >
-                Se connecter
+                Connexion
               </a>
             } @else {
               <a
                 routerLink="/login"
                 (click)="onLogout()"
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
+                class="-mx-3 flex gap-2 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-[#2D333C]"
               >
-                Se déconnecter
+                Déconnexion<span aria-hidden="true">&rarr;</span>
               </a>
             }
           </div>

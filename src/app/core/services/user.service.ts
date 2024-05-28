@@ -19,7 +19,11 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/users`, newUser);
   }
 
-  findAllUsers(): Observable<UserDto[]> {
-    return this.http.get<UserDto[]>(`${this.baseUrl}/users`);
+  getUsers(query: number): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(`${this.baseUrl}/users?limit=${query}`);
+  }
+
+  searchUsers(param: string): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(`${this.baseUrl}/users/search/${param}`);
   }
 }
