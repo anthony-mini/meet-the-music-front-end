@@ -52,7 +52,7 @@
               placeholder="Recherche..."
               autocomplete="off"
               [(ngModel)]="searchQuery"
-              (input)="searchUsers()"
+              (input)="searchQueryEstablishmentAndArtist()"
               (focus)="isSearchBarOpen = true"
               (focusout)="onFocusOut()"
               [ngClass]="{ hidden: !isSearchBarOpen, block: isSearchBarOpen }"
@@ -64,24 +64,31 @@
             [class.hidden]="!isSearchBarOpen"
           >
             <div
-              *ngFor="let user of users"
+              *ngFor="let item of users"
               class="py-2 px-3 rounded-lg hover:bg-gray-100"
             >
-              <a
-                *ngIf="user.role === 'artist'"
-                routerLink="/artist/{{ user.alias }}"
-                activatedRoute="router-link-active"
-                class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
-                >{{ user.firstName }} {{ user.lastName }}</a
-              >
+              <!-- Artist Profile -->
+              <ng-container *ngIf="item.artistProfile">
+                <a
+                  routerLink="/artist/{{ item.artistProfile.user.alias }}"
+                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                >
+                  {{ item.artistProfile.user.firstName }}
+                  {{ item.artistProfile.user.lastName }}
+                </a>
+              </ng-container>
 
-              <a
-                *ngIf="user.role === 'promoter'"
-                routerLink="/establishment/{{ user.alias }}"
-                activatedRoute="router-link-active"
-                class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
-                >{{ user.firstName }} {{ user.lastName }}</a
-              >
+              <!-- Establishment Profile -->
+              <ng-container *ngIf="item.establishmentProfile">
+                <a
+                  routerLink="/establishment/{{
+                    item.establishmentProfile.user.alias
+                  }}"
+                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                >
+                  {{ item.establishmentProfile.name }}
+                </a>
+              </ng-container>
             </div>
           </div>
         </div>
@@ -197,7 +204,7 @@
                 autocomplete="off"
                 placeholder="Recherche..."
                 [(ngModel)]="searchQuery"
-                (input)="searchUsers()"
+                (input)="searchQueryEstablishmentAndArtist()"
                 (focus)="isSearchBarOpen = true"
                 (focusout)="onFocusOut()"
               />
@@ -208,24 +215,32 @@
               [class.hidden]="!isSearchBarOpen"
             >
               <div
-                *ngFor="let user of users"
+                *ngFor="let item of users"
                 class="py-2 px-3 rounded-lg hover:bg-gray-100"
               >
-                <a
-                  *ngIf="user.role === 'artist'"
-                  routerLink="/artist/{{ user.alias }}"
-                  activatedRoute="router-link-active"
-                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
-                  >{{ user.firstName }} {{ user.lastName }}</a
-                >
+                <!-- Artist Profile -->
+                <ng-container *ngIf="item.artistProfile">
+                  <a
+                    routerLink="/artist/{{ item.artistProfile.user.alias }}"
+                    activatedRoute="router-link-active"
+                    class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                    >{{ item.artistProfile.user.firstName }}
+                    {{ item.artistProfile.user.lastName }}</a
+                  >
+                </ng-container>
 
-                <a
-                  *ngIf="user.role === 'promoter'"
-                  routerLink="/establishment/{{ user.alias }}"
-                  activatedRoute="router-link-active"
-                  class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
-                  >{{ user.firstName }} {{ user.lastName }}</a
-                >
+                <!-- Establishment Profile -->
+                <ng-container *ngIf="item.establishmentProfile">
+                  <a
+                    routerLink="/establishment/{{
+                      item.establishmentProfile.user.alias
+                    }}"
+                    activatedRoute="router-link-active"
+                    class="text-[#0E1218] font-[ClashGrotesk-Medium] text-md items-center flex gap-2 capitalize"
+                  >
+                    {{ item.establishmentProfile.name }}
+                  </a>
+                </ng-container>
               </div>
             </div>
           </div>
