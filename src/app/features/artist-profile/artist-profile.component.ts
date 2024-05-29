@@ -15,6 +15,7 @@ export class ArtistProfileComponent implements OnInit {
   artist: any;
   initials!: string;
   createdDate!: string;
+  isShareCollapsed = false;
 
   constructor(
     private artistProfileService: ArtistProfileService,
@@ -42,5 +43,9 @@ export class ArtistProfileComponent implements OnInit {
           year: 'numeric',
         });
       });
+  }
+
+  toggleShareButtonCollapse(): void {
+    this.isShareCollapsed = !this.isShareCollapsed;
   }
 }
