@@ -1,0 +1,26 @@
+{
+  "name": "MeetTheMusic",
+  "short_name": "MeetTheMusic",
+  "description": "Découvrez des artistes exceptionnels et des lieux emblématiques à Lyon avec MeetTheMusic. Notre plateforme facilite les connexions entre musiciens et espaces événementiels pour des performances captivantes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E1218",
+  "theme_color": "#0E1218",
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-150x150.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ]
+}
