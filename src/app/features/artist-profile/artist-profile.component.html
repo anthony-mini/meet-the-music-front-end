@@ -15,9 +15,9 @@
         >
       </span>
     </div>
-    <div class="flex flex-col items-start">
+    <div class="flex flex-col w-full">
       <span
-        class="py-0 px-1 sm:px-2 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs sm:text-sm md:text-sm uppercase mb-1"
+        class="py-0 px-1 sm:px-2 xl:px-2 text-[#0E1218] bg-[#F9D442] rounded font-[ClashDisplay-Medium] text-xs sm:text-sm md:text-sm uppercase mb-1 max-w-fit block"
       >
         @if (artist?.user.email) {
           Artiste
@@ -57,7 +57,7 @@
             {{ createdDate }}
           </p>
         </div>
-        <div class="container-social-media flex items-center gap-10">
+        <div class="container-social-media flex justify-between">
           <div class="flex gap-2 items-center">
             <button
               class="social-media-button p-1 rounded-lg transform transition duration-500 hover:scale-110"
@@ -192,12 +192,78 @@
               </svg>
             </button>
           </div>
-          <div class="hidden sm:flex">
+          <div class="flex items-center gap-4 relative">
             <button
-              class="banner-action-button rounded-lg text-white h-5 px-4 py-5 bg-[#6d9985]"
+              class="banner-action-button hidden sm:flex rounded-lg text-white h-5 px-4 py-5 bg-[#6d9985]"
             >
               Envoyer un Message
             </button>
+            <button
+              (click)="toggleShareButtonCollapse()"
+              class="share-button p-1 inline-flex justify-start rounded-lg transform transition duration-500"
+            >
+              <span class="sr-only">Open Share Options</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div
+              class="absolute right-10 z-10 mt-3 w-52 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              [class.hidden]="!isShareCollapsed"
+              aria-modal="true"
+            >
+              <!-- Collapse DropDown -->
+              <div class="py-1">
+                <button
+                  (click)="toggleShareButtonCollapse()"
+                  class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                  role="menuitem"
+                >
+                  Copier le lien
+                </button>
+                <button
+                  (click)="toggleShareButtonCollapse()"
+                  class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                  role="menuitem"
+                >
+                  Partager sur Instagram
+                </button>
+                <button
+                  (click)="toggleShareButtonCollapse()"
+                  class="text-[#0E1218] flex items-center gap-2 font-[ClashGrotesk-Medium] px-4 py-2 text-md hover:underline hover:rounded-t-lg"
+                  role="menuitem"
+                >
+                  Partager sur Twitter
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -222,13 +288,7 @@
         <p
           class="font-[ClashDisplay-Regular] text-sm sm:text-base text-white mb-3"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-          temporibus eligendi? Reiciendis repellendus quidem veniam excepturi
-          beatae fugiat, accusamus dolor. Quas aperiam aspernatur molestias
-          ipsam sint atque expedita! Tenetur nisi ab tempora qui non corporis
-          sequi, alias perspiciatis incidunt illo consequuntur sit totam
-          voluptas dolor, asperiores veniam animi doloremque quod commodi rerum
-          dicta officiis. Id reiciendis maxime expedita rem vitae?
+          {{ artist?.description }}
         </p>
       } @else {
         <p

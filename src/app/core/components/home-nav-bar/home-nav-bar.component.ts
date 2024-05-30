@@ -83,9 +83,9 @@ export class HomeNavBarComponent implements OnInit {
     });
   }
 
-  searchUsers(): void {
-    this.userService.searchUsers(this.searchQuery).subscribe((users) => {
-      this.users = users;
+  searchQueryEstablishmentAndArtist(): void {
+    this.userService.searchUsers(this.searchQuery).subscribe((data) => {
+      this.users = data;
     });
   }
 

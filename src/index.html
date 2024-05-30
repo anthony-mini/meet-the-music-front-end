@@ -7,16 +7,25 @@
     </title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="geo.region" content="FR-ARA" />
     <meta
       name="description"
       content="Découvrez des artistes exceptionnels et des lieux emblématiques à Lyon avec MeetTheMusic. Notre plateforme facilite les connexions entre musiciens et espaces événementiels pour des performances captivantes."
     />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <meta
       http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
+      content="upgrade-insecure-requests; object-src 'none'"
     />
+
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=31536000; includeSubDomains"
+    />
+
+    <meta name="theme-color" content="#0E1218" />
   </head>
   <body class="h-full bg-[#0E1216]">
     <app-root></app-root>
